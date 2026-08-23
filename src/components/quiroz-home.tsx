@@ -22,7 +22,7 @@ const projects = [
   { name: 'Maitagarri', type: 'Campaña · San Fermín', image: assets.maitagarri, href: 'https://padrearatosblog.github.io/maitagarri.sanfermin/' },
   { name: 'North Division', type: 'Concept / Demo', image: assets.north, href: 'https://padrearatosblog.github.io/north.division/', className: 'qh-project--wide' },
   { name: 'Nacimientos Quiroz', type: 'Experiencia · Memoria', image: assets.nacimientos, href: 'https://padrearatosblog.github.io/nacimientos.quiroz/' },
-  { name: 'Raíces', type: 'Escritura · Privacidad', image: assets.raices, href: 'https://padrearatosblog.github.io/raices-quiroz/' },
+  { name: 'Raíces', type: 'Escritura · Privacidad', image: assets.raices, href: 'https://raices-quiroz.bryans-astorga.chatgpt.site/' },
 ]
 
 function QuirozIntro() {
