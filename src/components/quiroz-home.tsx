@@ -136,7 +136,7 @@ export function QuirozHome() {
         <figure className="qh-about-photo qh-reveal"><img src={assets.portrait} alt="Bryans Astorga, diseñador web de Quiroz Digital Studio" width="576" height="1280" loading="lazy" decoding="async" /><figcaption>BRYANS ASTORGA / PAMPLONA</figcaption></figure>
       </section>
 
-      <section id="contacto" className="qh-contact"><img src={assets.hero} alt="" aria-hidden="true" loading="lazy" /><div className="qh-reveal"><p className="qh-kicker">Tu proyecto puede ser el siguiente</p><h2>Hagamos que tu negocio<br /><em>se vea como realmente vale.</em></h2><a href="https://github.com/Padrearatosblog" target="_blank" rel="noreferrer">Cuéntame tu idea <ArrowUpRight /></a></div></section>
+      <section id="contacto" className="qh-contact"><img src={assets.hero} alt="" aria-hidden="true" loading="lazy" /><div className="qh-reveal"><p className="qh-kicker">Tu proyecto puede ser el siguiente</p><h2>Hagamos que tu negocio<br /><em>se vea como realmente vale.</em></h2><a href="https://wa.me/34618905239?text=Hola%20Bryans%2C%20he%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20mi%20proyecto." target="_blank" rel="noreferrer" aria-label="Hablar con Bryans por WhatsApp">Cuéntame tu idea <ArrowUpRight /></a></div></section>
 
       <footer className="qh-footer"><a className="qh-brand" href="#inicio"><img src={assets.mark} alt="" width="340" height="265" /><span>QUIROZ<small>Digital Studio</small></span></a><p>Diseño web con estrategia, identidad y detalle.</p><span>© 2026 · Pamplona</span></footer>
     </main>
