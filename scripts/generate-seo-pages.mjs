@@ -1,10 +1,10 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
-const SITE = 'https://padrearatosblog.github.io/dise-oweb.quiroz'
+const SITE = 'https://quirozstudio.github.io/dise-oweb.quiroz'
 const BASE = '/dise-oweb.quiroz'
 const OUTPUT = resolve('dist')
-const UPDATED = '2026-08-19'
+const UPDATED = '2026-08-25'
 
 const routes = [
   {
@@ -207,7 +207,7 @@ function schemaFor(page) {
         { '@type': 'City', name: 'Pamplona' },
         { '@type': 'AdministrativeArea', name: 'Navarra' },
       ],
-      sameAs: ['https://github.com/Padrearatosblog'],
+      sameAs: ['https://github.com/quirozstudio'],
       knowsAbout: ['Diseño web', 'Desarrollo web', 'SEO local', 'Hostelería', 'Menús digitales QR'],
     },
     {

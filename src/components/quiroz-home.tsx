@@ -19,9 +19,9 @@ const assets = {
 const projects = [
   { name: 'Casa Paco', type: 'Web · Hostelería', image: assets.casa, href: 'https://casapacopamplona.com/', className: 'qh-project--wide' },
   { name: 'Karla Castañeda', type: 'Web · Bienestar', image: assets.karla, imageAlt: 'Karla Castañeda realizando un masaje profesional en camilla', href: 'https://kcmasajesybelleza.es/' },
-  { name: 'Maitagarri', type: 'Campaña · San Fermín', image: assets.maitagarri, href: 'https://padrearatosblog.github.io/maitagarri.sanfermin/' },
-  { name: 'North Division', type: 'Concept / Demo', image: assets.north, href: 'https://padrearatosblog.github.io/north.division/', className: 'qh-project--wide' },
-  { name: 'Nacimientos Quiroz', type: 'Experiencia · Memoria', image: assets.nacimientos, href: 'https://padrearatosblog.github.io/nacimientos.quiroz/' },
+  { name: 'Maitagarri', type: 'Campaña · San Fermín', image: assets.maitagarri, href: 'https://quirozstudio.github.io/maitagarri.sanfermin/' },
+  { name: 'North Division', type: 'Concept / Demo', image: assets.north, href: 'https://quirozstudio.github.io/north.division/', className: 'qh-project--wide' },
+  { name: 'Nacimientos Quiroz', type: 'Experiencia · Memoria', image: assets.nacimientos, href: 'https://quirozstudio.github.io/nacimientos.quiroz/' },
   { name: 'Raíces', type: 'Escritura · Privacidad', image: assets.raices, href: 'https://raices-quiroz.bryans-astorga.chatgpt.site/' },
 ]
 

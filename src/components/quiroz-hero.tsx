@@ -533,12 +533,12 @@ function ServiceDemonstrations() {
 
 function PortfolioNarrative() {
   const portfolio = [
-    { key: 'casa', number: '01', name: 'Casa Paco', kind: 'Hostelería · Web y carta digital', statement: 'Convertir una visita en ganas de sentarse a la mesa.', image: CASA_PACO_HERO, width: 1024, height: 1536, alt: 'Fachada del restaurante Casa Paco', href: 'https://github.com/Padrearatosblog/casapaco-demo' },
-    { key: 'karla', number: '02', name: 'Karla Castañeda', kind: 'Bienestar · Presencia local', statement: 'Una experiencia serena para un servicio basado en confianza.', image: PORTFOLIO_ASSETS.karla, width: 810, height: 1080, alt: 'Retrato profesional de Karla Castañeda', href: 'https://github.com/Padrearatosblog/karla.casta-eda' },
-    { key: 'maitagarri', number: '03', name: 'Maitagarri · San Fermín', kind: 'Campaña · Hostelería · Carta', statement: 'Una identidad preparada para el momento más intenso del año.', image: PORTFOLIO_ASSETS.maitagarri, width: 1023, height: 1537, alt: 'Fachada del Asador Maitagarri en Pamplona', href: 'https://github.com/Padrearatosblog/maitagarri.sanfermin' },
-    { key: 'north', number: '04', name: 'North Division', kind: 'Concept / Demo · Dirección creativa', statement: 'La ingeniería explicada como una construcción cinematográfica.', image: PORTFOLIO_ASSETS.north, width: 1500, height: 844, alt: 'Estructura industrial del concepto North Division', href: 'https://github.com/Padrearatosblog/north.division' },
-    { key: 'birth', number: '05', name: 'Nacimientos Quiroz', kind: 'Experiencia personal · Memoria', statement: 'Tecnología que baja la voz para dejar hablar a los recuerdos.', image: PORTFOLIO_ASSETS.nacimientos, width: 1500, height: 844, alt: 'Fotografía de recién nacida del proyecto Nacimientos Quiroz', href: 'https://github.com/Padrearatosblog/nacimientos.quiroz' },
-    { key: 'blog', number: '06', name: 'Raíces', kind: 'Memoria · Escritura privada', statement: 'Un espacio íntimo para escribir, guardar recuerdos y compartirlos solo con quien elijas.', image: PORTFOLIO_ASSETS.blog, width: 1400, height: 933, alt: 'Manos sosteniendo una fotografía familiar sobre un cuaderno en el proyecto Raíces', href: 'https://github.com/Padrearatosblog/raices-quiroz' },
+    { key: 'casa', number: '01', name: 'Casa Paco', kind: 'Hostelería · Web y carta digital', statement: 'Convertir una visita en ganas de sentarse a la mesa.', image: CASA_PACO_HERO, width: 1024, height: 1536, alt: 'Fachada del restaurante Casa Paco', href: 'https://github.com/quirozstudio/casapaco-demo' },
+    { key: 'karla', number: '02', name: 'Karla Castañeda', kind: 'Bienestar · Presencia local', statement: 'Una experiencia serena para un servicio basado en confianza.', image: PORTFOLIO_ASSETS.karla, width: 810, height: 1080, alt: 'Retrato profesional de Karla Castañeda', href: 'https://github.com/quirozstudio/karla.casta-eda' },
+    { key: 'maitagarri', number: '03', name: 'Maitagarri · San Fermín', kind: 'Campaña · Hostelería · Carta', statement: 'Una identidad preparada para el momento más intenso del año.', image: PORTFOLIO_ASSETS.maitagarri, width: 1023, height: 1537, alt: 'Fachada del Asador Maitagarri en Pamplona', href: 'https://github.com/quirozstudio/maitagarri.sanfermin' },
+    { key: 'north', number: '04', name: 'North Division', kind: 'Concept / Demo · Dirección creativa', statement: 'La ingeniería explicada como una construcción cinematográfica.', image: PORTFOLIO_ASSETS.north, width: 1500, height: 844, alt: 'Estructura industrial del concepto North Division', href: 'https://github.com/quirozstudio/north.division' },
+    { key: 'birth', number: '05', name: 'Nacimientos Quiroz', kind: 'Experiencia personal · Memoria', statement: 'Tecnología que baja la voz para dejar hablar a los recuerdos.', image: PORTFOLIO_ASSETS.nacimientos, width: 1500, height: 844, alt: 'Fotografía de recién nacida del proyecto Nacimientos Quiroz', href: 'https://github.com/quirozstudio/nacimientos.quiroz' },
+    { key: 'blog', number: '06', name: 'Raíces', kind: 'Memoria · Escritura privada', statement: 'Un espacio íntimo para escribir, guardar recuerdos y compartirlos solo con quien elijas.', image: PORTFOLIO_ASSETS.blog, width: 1400, height: 933, alt: 'Manos sosteniendo una fotografía familiar sobre un cuaderno en el proyecto Raíces', href: 'https://github.com/quirozstudio/raices-quiroz' },
   ]
   return (
     <section id="proyectos" className="portfolio-narrative">
@@ -698,7 +698,7 @@ export function QuirozHero() {
         <p className="eyebrow light"><span /> Tu próximo paso</p>
         <h2>¿Creamos algo<br /><em>difícil de ignorar?</em></h2>
         <p className="contact-copy">Cuéntame qué tienes en mente. Te responderé con una primera dirección clara para convertirlo en una web que venda tu verdadero valor.</p>
-        <a href="https://github.com/Padrearatosblog" target="_blank" rel="noreferrer" className="contact-button"><MessageCircle size={19} /> Conoce mi trabajo <ArrowUpRight size={18} /></a>
+        <a href="https://github.com/quirozstudio" target="_blank" rel="noreferrer" className="contact-button"><MessageCircle size={19} /> Conoce mi trabajo <ArrowUpRight size={18} /></a>
         <div className="contact-note">Respuesta personal · Sin compromiso · Propuesta a medida</div>
       </section>
 

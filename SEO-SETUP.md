@@ -8,14 +8,14 @@
 - Servicios relacionados: desarrollo web, menús digitales QR y SEO local
 - Ubicación: Pamplona, Navarra, España
 - Área comunicada actualmente: Pamplona y Navarra
-- Perfil público conocido: https://github.com/Padrearatosblog
+- Perfil público conocido: https://github.com/quirozstudio
 
 ## Datos pendientes del propietario
 
 No deben añadirse a la web ni a Schema.org hasta que sean reales y públicos:
 
 - dominio propio definitivo;
-- teléfono comercial;
+- teléfono comercial: +34 618 905 239;
 - correo comercial;
 - dirección, solo si se atiende al público y se desea publicar;
 - horario;
