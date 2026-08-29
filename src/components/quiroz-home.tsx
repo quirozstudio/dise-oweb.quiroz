@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ArrowDownRight, ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react'
 import './quiroz-home.css'
 
@@ -29,9 +29,11 @@ function QuirozIntro() {
   const [visible, setVisible] = useState(true)
   const [exiting, setExiting] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
     const previousOverflow = document.body.style.overflow
+    document.getElementById('qh-boot-cover')?.remove()
+    document.documentElement.classList.remove('qh-preintro')
     document.body.style.overflow = 'hidden'
     const exitTimer = window.setTimeout(() => setExiting(true), reducedMotion ? 450 : 2750)
     const closeTimer = window.setTimeout(() => setVisible(false), reducedMotion ? 750 : 3350)
