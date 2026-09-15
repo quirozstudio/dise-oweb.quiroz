@@ -6,12 +6,12 @@ const sitemap = await readFile(resolve(output, 'sitemap.xml'), 'utf8')
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1])
 const errors = []
 const titles = new Map()
-const indexedPaths = new Set(urls.map((url) => new URL(url).pathname.replace('/dise-oweb.quiroz', '') || '/'))
+const indexedPaths = new Set(urls.map((url) => new URL(url).pathname || '/'))
 
 const value = (html, pattern) => html.match(pattern)?.[1]?.trim()
 
 for (const url of urls) {
-  const pathname = new URL(url).pathname.replace('/dise-oweb.quiroz', '') || '/'
+  const pathname = new URL(url).pathname || '/'
   const file = pathname === '/' ? resolve(output, 'index.html') : resolve(output, `.${pathname}`, 'index.html')
   let html = ''
   try {
@@ -44,9 +44,9 @@ for (const url of urls) {
 
   for (const [, href] of html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
     const target = new URL(href, url)
-    if (target.origin !== new URL(url).origin || !target.pathname.startsWith('/dise-oweb.quiroz')) continue
+    if (target.origin !== new URL(url).origin || !target.pathname.startsWith('/')) continue
     if (/\.[a-z0-9]+$/i.test(target.pathname)) continue
-    const targetPath = target.pathname.replace('/dise-oweb.quiroz', '') || '/'
+    const targetPath = target.pathname || '/'
     if (!indexedPaths.has(targetPath)) errors.push(`${pathname}: enlace interno roto o no indexado (${href})`)
   }
 }

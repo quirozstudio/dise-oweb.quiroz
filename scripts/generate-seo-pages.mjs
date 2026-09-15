@@ -1,10 +1,10 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
-const SITE = 'https://quirozstudio.github.io/dise-oweb.quiroz'
-const BASE = '/dise-oweb.quiroz'
+const SITE = 'https://quirozstudio.es'
+const BASE = ''
 const OUTPUT = resolve('dist')
-const UPDATED = '2026-08-25'
+const UPDATED = '2026-09-16'
 
 const routes = [
   {

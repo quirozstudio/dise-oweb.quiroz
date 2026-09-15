@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quirozstudio.github.io/dise-oweb.quiroz/sitemap.xml
+Sitemap: https://quirozstudio.es/sitemap.xml
