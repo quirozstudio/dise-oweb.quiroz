@@ -14,16 +14,40 @@ const assets = {
   north: `${BASE}portfolio/north.webp`,
   nacimientos: `${BASE}portfolio/nacimientos.webp`,
   raices: `${BASE}portfolio/blog.webp`,
+  bodas: `${BASE}portfolio/bodas-otazu-cover.png`,
+  birthday: `${BASE}portfolio/cumple-infantil-cover.png`,
+  experience: `${BASE}portfolio/experience-quiroz-cover.png`,
 }
 
-const projects = [
-  { name: 'Casa Paco', type: 'Web · Hostelería', image: assets.casa, href: 'https://casapacopamplona.com/', className: 'qh-project--wide' },
+type Project = {
+  name: string
+  type: string
+  image: string
+  imageAlt?: string
+  href: string
+  className?: string
+}
+
+const experienceProject: Project = { name: 'Experience Quiroz', type: 'Experiencia visual · Estudio', image: assets.experience, imageAlt: 'Portal circular de bronce en un espacio arquitectónico oscuro para Experience Quiroz', href: '#/experiencia', className: 'qh-project--wide' }
+
+const businessProjects: Project[] = [
+  { name: 'Casa Paco', type: 'Web · Hostelería', image: assets.casa, href: 'https://casapacopamplona.com/' },
   { name: 'Karla Castañeda', type: 'Web · Bienestar', image: assets.karla, imageAlt: 'Karla Castañeda realizando un masaje profesional en camilla', href: 'https://kcmasajesybelleza.es/' },
   { name: 'Maitagarri', type: 'Campaña · San Fermín', image: assets.maitagarri, href: 'https://quirozstudio.github.io/maitagarri.sanfermin/' },
-  { name: 'North Division', type: 'Concept / Demo', image: assets.north, href: 'https://quirozstudio.github.io/north.division/', className: 'qh-project--wide' },
+  { name: 'North Division', type: 'Concept / Demo', image: assets.north, href: 'https://quirozstudio.github.io/north.division/' },
+]
+
+const personalExperienceProjects: Project[] = [
+  { name: 'Bodas Otazu', type: 'Experiencia · Celebración', image: assets.bodas, imageAlt: 'Papelería de boda sobre una mesa de piedra frente a un viñedo', href: 'https://quirozstudio.github.io/bodas.otazu/' },
+  { name: 'Cumpleaños infantil', type: 'Experiencia · Familia', image: assets.birthday, imageAlt: 'Mesa de cumpleaños infantil decorada con globos, tarta y regalos', href: 'https://quirozstudio.github.io/cumple.infantil.quiroz/' },
   { name: 'Nacimientos Quiroz', type: 'Experiencia · Memoria', image: assets.nacimientos, href: 'https://quirozstudio.github.io/nacimientos.quiroz/' },
   { name: 'Raíces', type: 'Escritura · Privacidad', image: assets.raices, href: 'https://raices-quiroz.bryans-astorga.chatgpt.site/' },
 ]
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const isExternal = project.href.startsWith('http')
+  return <a className={`qh-project qh-reveal ${project.className ?? ''}`} href={project.href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noreferrer' : undefined} key={project.name}><figure><img src={project.image} alt={project.imageAlt ?? `Proyecto ${project.name} diseñado por Quiroz`} loading="lazy" decoding="async" /></figure><div><span>0{index + 1} / {project.type}</span><h3>{project.name}</h3><ArrowUpRight /></div></a>
+}
 
 function QuirozIntro() {
   const [visible, setVisible] = useState(true)
@@ -104,9 +128,9 @@ export function QuirozHome() {
       <QuirozIntro />
       <header className="qh-header">
         <a className="qh-brand" href="#inicio" aria-label="Quiroz, inicio"><img src={assets.mark} alt="" width="340" height="265" /><span>QUIROZ<small>Digital Studio</small></span></a>
-        <nav className="qh-nav" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a></nav>
+        <nav className="qh-nav" aria-label="Navegación principal"><a href="#/experiencia">Experience</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a></nav>
         <div className="qh-actions"><button type="button" className="qh-theme" onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} aria-label={`Activar modo ${theme === 'light' ? 'oscuro' : 'claro'}`}>{theme === 'light' ? <Moon /> : <Sun />}</button><a className="qh-talk" href="#contacto">Hablemos <ArrowUpRight /></a><button type="button" className="qh-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú" aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button></div>
-        {menuOpen && <nav className="qh-mobile-nav" aria-label="Navegación móvil"><a href="#servicios" onClick={() => setMenuOpen(false)}>Servicios</a><a href="#proyectos" onClick={() => setMenuOpen(false)}>Proyectos</a><a href="#sobre-mi" onClick={() => setMenuOpen(false)}>Sobre mí</a><a href="#contacto" onClick={() => setMenuOpen(false)}>Hablemos</a></nav>}
+        {menuOpen && <nav className="qh-mobile-nav" aria-label="Navegación móvil"><a href="#/experiencia" onClick={() => setMenuOpen(false)}>Experience</a><a href="#servicios" onClick={() => setMenuOpen(false)}>Servicios</a><a href="#proyectos" onClick={() => setMenuOpen(false)}>Proyectos</a><a href="#sobre-mi" onClick={() => setMenuOpen(false)}>Sobre mí</a><a href="#contacto" onClick={() => setMenuOpen(false)}>Hablemos</a></nav>}
       </header>
 
       <section id="inicio" className="qh-hero" ref={heroRef}>
@@ -129,8 +153,10 @@ export function QuirozHome() {
       </section>
 
       <section id="proyectos" className="qh-work">
-        <header className="qh-work-head qh-reveal"><div><p className="qh-kicker">Trabajo seleccionado</p><h2>No repito fórmulas.<br /><em>Diseño para cada historia.</em></h2></div><p>Hostelería, bienestar, industria y proyectos personales. La dirección cambia; el criterio permanece.</p></header>
-        <div className="qh-grid">{projects.map((project, index) => <a className={`qh-project qh-reveal ${project.className ?? ''}`} href={project.href} target="_blank" rel="noreferrer" key={project.name}><figure><img src={project.image} alt={'imageAlt' in project ? project.imageAlt : `Proyecto ${project.name} diseñado por Quiroz`} loading="lazy" decoding="async" /></figure><div><span>0{index + 1} / {project.type}</span><h3>{project.name}</h3><ArrowUpRight /></div></a>)}</div>
+        <header className="qh-work-head qh-reveal"><div><p className="qh-kicker">Trabajo seleccionado · 09 proyectos</p><h2>No repito fórmulas.<br /><em>Diseño para cada historia.</em></h2></div><p>Una selección dividida por intención: webs para negocios y experiencias digitales para momentos que merecen guardarse.</p></header>
+        <section className="qh-project-feature" aria-labelledby="qh-feature-title"><header className="qh-project-group-head qh-reveal"><div><p className="qh-kicker">La experiencia del estudio</p><h3 id="qh-feature-title">Una forma de entender<br /><em>lo digital.</em></h3></div><p>Un recorrido visual por la esencia de Quiroz: estrategia, diseño, ritmo y emoción.</p></header><div className="qh-grid"><ProjectCard project={experienceProject} index={0} /></div></section>
+        <section className="qh-project-group" aria-labelledby="qh-business-title"><header className="qh-project-group-head qh-reveal"><div><p className="qh-kicker">01 / Proyectos comerciales</p><h3 id="qh-business-title">Webs para<br /><em>negocios.</em></h3></div><p>Presencias digitales pensadas para explicar mejor el valor de cada negocio y convertir visitas en oportunidades.</p></header><div className="qh-grid">{businessProjects.map((project, index) => <ProjectCard project={project} index={index + 1} key={project.name} />)}</div></section>
+        <section className="qh-project-group" aria-labelledby="qh-personal-title"><header className="qh-project-group-head qh-reveal"><div><p className="qh-kicker">02 / Proyectos especiales</p><h3 id="qh-personal-title">Experiencias y<br /><em>celebraciones.</em></h3></div><p>Diseños digitales para compartir una historia, celebrar una fecha o conservar un recuerdo.</p></header><div className="qh-grid">{personalExperienceProjects.map((project, index) => <ProjectCard project={project} index={index + businessProjects.length + 1} key={project.name} />)}</div></section>
       </section>
 
       <section id="sobre-mi" className="qh-about">
