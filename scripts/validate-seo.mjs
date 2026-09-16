@@ -58,7 +58,7 @@ for (const [title, paths] of titles) {
 const notFound = await readFile(resolve(output, '404.html'), 'utf8')
 if (!notFound.includes('noindex,follow')) errors.push('/404.html: debe incluir noindex,follow')
 
-for (const required of ['robots.txt', 'sitemap.xml', 'og-quiroz.webp', 'favicon-quiroz.svg']) {
+for (const required of ['robots.txt', 'sitemap.xml', 'og-quiroz.webp', 'favicon-quiroz.svg', 'qr-maitagarri.webp', 'qr-quiroz-cocina.webp']) {
   try { await access(resolve(output, required)) } catch { errors.push(`falta /${required}`) }
 }
 

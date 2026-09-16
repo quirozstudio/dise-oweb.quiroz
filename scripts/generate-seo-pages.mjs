@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
 const SITE = 'https://quirozstudio.es'
@@ -321,6 +321,10 @@ for (const page of routes) {
   const directory = resolve(OUTPUT, `.${page.path}`)
   await mkdir(directory, { recursive: true })
   await writeFile(resolve(directory, 'index.html'), renderPage(page), 'utf8')
+}
+
+for (const image of ['qr-maitagarri.webp', 'qr-quiroz-cocina.webp']) {
+  await copyFile(resolve(image), resolve(OUTPUT, image))
 }
 
 const urls = ['/', ...routes.map((route) => route.path)]
