@@ -138,7 +138,7 @@ export function QuirozHome() {
         <div className="qh-hero-shade" />
         <div className="qh-hero-copy">
           <p className="qh-kicker">Diseño web en Pamplona · Bryans Astorga</p>
-          <h1>Tu negocio<br />merece una web<br /><em>que esté a su altura.</em></h1>
+          <h1>Diseño web en<br /><em>Pamplona</em> para negocios<br />locales.</h1>
           <p>Diseño páginas web con identidad, estrategia y una presencia visual capaz de convertir atención en clientes.</p>
           <div><a className="qh-primary" href="#proyectos">Ver proyectos <ArrowDownRight /></a><a className="qh-secondary" href="#servicios">Qué puedo hacer por ti</a></div>
         </div>
