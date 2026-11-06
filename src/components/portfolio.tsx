@@ -3,31 +3,22 @@ import projects from '@/content/projects.json'
 
 export type Project = (typeof projects)[number]
 
-function projectUrl(project: Project, base: string) {
-  return project.href.startsWith('/') ? `${base}${project.href.slice(1)}` : project.href
+function resolveHref(project: Project) {
+  return project.href.startsWith('/') ? `${import.meta.env.BASE_URL}${project.href.slice(1)}` : project.href
 }
 
 export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
-  const isExternal = project.href.startsWith('http')
-  const href = projectUrl(project, import.meta.env.BASE_URL)
-
-  return (
-    <article className={`qh-portfolio-card${featured ? ' qh-portfolio-card--featured' : ''}`}>
-      <a className="qh-portfolio-image" href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noreferrer' : undefined} aria-label={`Ver proyecto ${project.name}`}>
-        <img src={`${import.meta.env.BASE_URL}${project.image.slice(1)}`} alt={project.alt} loading={featured ? 'eager' : 'lazy'} decoding="async" />
-        <span className="qh-portfolio-arrow" aria-hidden="true"><ArrowUpRight /></span>
-      </a>
-      <div className="qh-portfolio-meta">
-        <div><span className="qh-eyebrow">{project.sector}</span><span className="qh-status">{project.status}</span></div>
-        <h3><a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noreferrer' : undefined}>{project.name}</a></h3>
-        <p>{project.statement}</p>
-        <span className="qh-outcome"><b>Resultado</b>{project.outcome}</span>
-      </div>
-    </article>
-  )
+  const external = project.href.startsWith('http')
+  const href = resolveHref(project)
+  return <article className={`qh-project-card${featured ? ' qh-project-card--featured' : ''}`}>
+    <a className="qh-project-image" href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined} aria-label={`Ver proyecto ${project.name}`}>
+      <img src={`${import.meta.env.BASE_URL}${project.image.slice(1)}`} alt={project.alt} loading={featured ? 'eager' : 'lazy'} decoding="async" />
+      <span className="qh-project-arrow" aria-hidden="true"><ArrowUpRight /></span>
+    </a>
+    <div className="qh-project-info"><div><span>{project.sector}</span><small>{project.id === 'north-division' ? 'Concepto' : 'Portfolio'}</small></div><h3><a href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{project.name}</a></h3><p>{project.statement}</p><a className="qh-link" href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>Ver proyecto <ArrowUpRight aria-hidden="true" /></a></div>
+  </article>
 }
 
-export function PortfolioGrid({ items = projects, featuredId }: { items?: Project[]; featuredId?: string }) {
-  return <div className="qh-portfolio-grid">{items.map((project) => <ProjectCard key={project.id} project={project} featured={project.id === featuredId} />)}</div>
+export function PortfolioGrid({ items = projects }: { items?: Project[] }) {
+  return <div className="qh-project-grid">{items.map((project, index) => <ProjectCard key={project.id} project={project} featured={index === 0} />)}</div>
 }
-

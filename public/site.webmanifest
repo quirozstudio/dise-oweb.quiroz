@@ -5,14 +5,12 @@
   "lang": "es",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#242725",
-  "theme_color": "#242725",
-  "icons": [
-    {
-      "src": "/favicon-quiroz.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
-  ]
+  "background_color": "#0c0a08",
+  "theme_color": "#0c0a08",
+  "icons": [{
+    "src": "/favicon-quiroz.svg",
+    "sizes": "any",
+    "type": "image/svg+xml",
+    "purpose": "any"
+  }]
 }

@@ -1,113 +1,57 @@
 [
   {
-    "id": "experience-quiroz",
-    "name": "Experience Quiroz",
-    "sector": "Experiencia digital · Estudio",
-    "status": "Experiencia propia",
-    "image": "/portfolio/experience-quiroz-cover.png",
-    "alt": "Portal circular de bronce en un espacio arquitectónico oscuro para Experience Quiroz",
-    "href": "/#/experiencia",
-    "statement": "Un recorrido visual por la forma de entender estrategia, diseño, ritmo y emoción.",
-    "outcome": "Una experiencia interactiva creada para explicar el universo del estudio."
+    "id": "maitagarri",
+    "name": "Maitagarri",
+    "sector": "Hostelería · Proyecto realizado",
+    "image": "/portfolio/maitagarri.webp",
+    "alt": "Identidad visual del proyecto Maitagarri para hostelería en Pamplona",
+    "href": "/proyectos/asador-maitagarri/",
+    "externalHref": "https://quirozstudio.github.io/maitagarri.sanfermin/",
+    "statement": "Una pieza QR con el carácter de la brasa, el vino y Pamplona."
   },
   {
     "id": "casa-paco",
     "name": "Casa Paco",
     "sector": "Hostelería · Web y carta digital",
-    "status": "Proyecto publicado",
     "image": "/casa-paco-fachada.webp",
     "alt": "Fachada del restaurante Casa Paco en Pamplona",
     "href": "https://casapacopamplona.com/",
-    "statement": "Convertir una visita digital en ganas de sentarse a la mesa.",
-    "outcome": "Una presencia digital con carta accesible y recorrido pensado para móvil."
-  },
-  {
-    "id": "maitagarri",
-    "name": "Maitagarri",
-    "sector": "Hostelería · Campaña San Fermín",
-    "status": "Proyecto realizado",
-    "image": "/portfolio/maitagarri.webp",
-    "alt": "Identidad visual del proyecto Maitagarri para hostelería en Pamplona",
-    "href": "/proyectos/asador-maitagarri/",
-    "externalHref": "https://quirozstudio.github.io/maitagarri.sanfermin/",
-    "statement": "Una identidad preparada para el momento más intenso del año.",
-    "outcome": "Una pieza QR multilingüe integrada en el ambiente y la comunicación del asador."
+    "statement": "Una presencia digital pensada para abrir el apetito y facilitar la visita."
   },
   {
     "id": "karla-castaneda",
     "name": "Karla Castañeda",
     "sector": "Bienestar · Presencia local",
-    "status": "Proyecto publicado",
     "image": "/portfolio/karla-masaje.webp",
     "alt": "Karla Castañeda realizando un masaje profesional en camilla",
     "href": "https://kcmasajesybelleza.es/",
-    "statement": "Una experiencia serena para un servicio basado en confianza.",
-    "outcome": "Una presencia local cálida y clara para explicar el servicio sin ruido."
+    "statement": "Una experiencia serena para un servicio basado en confianza."
   },
   {
     "id": "north-division",
     "name": "North Division",
-    "sector": "Concepto / Demo · Dirección creativa",
-    "status": "Concepto / demo",
+    "sector": "Concepto / demo · Dirección creativa",
     "image": "/portfolio/north.webp",
     "alt": "Estructura industrial del concepto North Division",
     "href": "https://quirozstudio.github.io/north.division/",
-    "statement": "La ingeniería explicada como una construcción cinematográfica.",
-    "outcome": "Una exploración visual de cómo una marca industrial puede ganar carácter digital."
+    "statement": "Una exploración visual de la ingeniería como construcción cinematográfica."
   },
   {
     "id": "menus-qr",
     "name": "Menús QR",
-    "sector": "Hostelería · Experiencias digitales",
-    "status": "Colección de propuestas",
+    "sector": "Hostelería · Experiencia móvil",
     "image": "/qr-quiroz-cocina.webp",
     "alt": "Diseño de menú digital QR para una experiencia gastronómica",
     "href": "/proyectos/menus-qr/",
-    "statement": "Tres contextos, tres experiencias QR diseñadas con intención.",
-    "outcome": "Cartas y accesos QR claros, legibles y adaptados al tono de cada negocio."
+    "statement": "Cartas y accesos QR claros, legibles y adaptados al tono de cada negocio."
   },
   {
     "id": "bodas-otazu",
     "name": "Bodas Otazu",
     "sector": "Eventos · Celebraciones",
-    "status": "Experiencia digital",
     "image": "/portfolio/bodas-otazu-cover.png",
     "alt": "Papelería de boda sobre una mesa de piedra frente a un viñedo",
     "href": "https://quirozstudio.github.io/bodas.otazu/",
-    "statement": "Diseño digital para presentar una celebración con calma y detalle.",
-    "outcome": "Una experiencia visual que traslada el tono del evento a una pieza digital."
-  },
-  {
-    "id": "cumpleanos-infantil",
-    "name": "Cumpleaños infantil",
-    "sector": "Eventos · Familia",
-    "status": "Experiencia digital",
-    "image": "/portfolio/cumple-infantil-cover.png",
-    "alt": "Mesa de cumpleaños infantil decorada con globos, tarta y regalos",
-    "href": "https://quirozstudio.github.io/cumple.infantil.quiroz/",
-    "statement": "Una invitación digital que convierte la información en ilusión.",
-    "outcome": "Una pieza sencilla de compartir y fácil de consultar desde el móvil."
-  },
-  {
-    "id": "nacimientos-quiroz",
-    "name": "Nacimientos Quiroz",
-    "sector": "Memoria · Experiencia personal",
-    "status": "Experiencia digital",
-    "image": "/portfolio/nacimientos.webp",
-    "alt": "Fotografía de recién nacida del proyecto Nacimientos Quiroz",
-    "href": "https://quirozstudio.github.io/nacimientos.quiroz/",
-    "statement": "Tecnología que baja la voz para dejar hablar a los recuerdos.",
-    "outcome": "Una experiencia personal diseñada para conservar y compartir una historia."
-  },
-  {
-    "id": "raices",
-    "name": "Raíces",
-    "sector": "Memoria · Escritura privada",
-    "status": "Proyecto privado",
-    "image": "/portfolio/blog.webp",
-    "alt": "Manos sosteniendo una fotografía familiar sobre un cuaderno en el proyecto Raíces",
-    "href": "https://raices-quiroz.bryans-astorga.chatgpt.site/",
-    "statement": "Un espacio íntimo para escribir, guardar recuerdos y compartirlos.",
-    "outcome": "Una pieza digital privada con un recorrido pensado para leer y volver."
+    "statement": "Una experiencia digital para presentar una celebración con calma y detalle."
   }
 ]
