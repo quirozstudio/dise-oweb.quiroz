@@ -45,13 +45,15 @@ function ContactForm() {
 
 export function QuirozHome() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => localStorage.getItem('quiroz-theme') === 'light' ? 'light' : 'dark')
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    try { return localStorage.getItem('quiroz-theme') === 'light' ? 'light' : 'dark' } catch { return 'dark' }
+  })
 
   useEffect(() => {
     document.title = 'Diseño web en Pamplona para negocios locales | Quiroz'
     document.documentElement.dataset.theme = theme
     document.documentElement.style.colorScheme = theme
-    localStorage.setItem('quiroz-theme', theme)
+    try { localStorage.setItem('quiroz-theme', theme) } catch { /* storage may be disabled */ }
   }, [theme])
 
   useEffect(() => {
