@@ -1,0 +1,57 @@
+[
+  {
+    "id": "maitagarri",
+    "name": "Maitagarri",
+    "sector": "Hostelería · Proyecto realizado",
+    "image": "/portfolio/maitagarri.webp",
+    "alt": "Identidad visual del proyecto Maitagarri para hostelería en Pamplona",
+    "href": "/proyectos/asador-maitagarri/",
+    "externalHref": "https://quirozstudio.github.io/maitagarri.sanfermin/",
+    "statement": "Una pieza QR con el carácter de la brasa, el vino y Pamplona."
+  },
+  {
+    "id": "casa-paco",
+    "name": "Casa Paco",
+    "sector": "Hostelería · Web y carta digital",
+    "image": "/casa-paco-fachada.webp",
+    "alt": "Fachada del restaurante Casa Paco en Pamplona",
+    "href": "https://casapacopamplona.com/",
+    "statement": "Una presencia digital pensada para abrir el apetito y facilitar la visita."
+  },
+  {
+    "id": "karla-castaneda",
+    "name": "Karla Castañeda",
+    "sector": "Bienestar · Presencia local",
+    "image": "/portfolio/karla-masaje.webp",
+    "alt": "Karla Castañeda realizando un masaje profesional en camilla",
+    "href": "https://kcmasajesybelleza.es/",
+    "statement": "Una experiencia serena para un servicio basado en confianza."
+  },
+  {
+    "id": "north-division",
+    "name": "North Division",
+    "sector": "Concepto / demo · Dirección creativa",
+    "image": "/portfolio/north.webp",
+    "alt": "Estructura industrial del concepto North Division",
+    "href": "https://quirozstudio.github.io/north.division/",
+    "statement": "Una exploración visual de la ingeniería como construcción cinematográfica."
+  },
+  {
+    "id": "menus-qr",
+    "name": "Menús QR",
+    "sector": "Hostelería · Experiencia móvil",
+    "image": "/qr-quiroz-cocina.webp",
+    "alt": "Diseño de menú digital QR para una experiencia gastronómica",
+    "href": "/proyectos/menus-qr/",
+    "statement": "Cartas y accesos QR claros, legibles y adaptados al tono de cada negocio."
+  },
+  {
+    "id": "bodas-otazu",
+    "name": "Bodas Otazu",
+    "sector": "Eventos · Celebraciones",
+    "image": "/portfolio/bodas-otazu-cover.png",
+    "alt": "Papelería de boda sobre una mesa de piedra frente a un viñedo",
+    "href": "https://quirozstudio.github.io/bodas.otazu/",
+    "statement": "Una experiencia digital para presentar una celebración con calma y detalle."
+  }
+]

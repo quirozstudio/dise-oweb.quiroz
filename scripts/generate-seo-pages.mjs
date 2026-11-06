@@ -1,10 +1,11 @@
-import { copyFile, mkdir, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
 const SITE = 'https://quirozstudio.es'
 const BASE = ''
 const OUTPUT = resolve('dist')
 const UPDATED = '2026-09-16'
+const projects = JSON.parse(await readFile(resolve('src/content/projects.json'), 'utf8'))
 
 const routes = [
   {
@@ -255,6 +256,15 @@ function renderSections(page) {
     </article>`).join('')
 }
 
+function renderPortfolio(page) {
+  if (page.path !== '/proyectos/') return ''
+  return `<section class="project-portfolio" aria-labelledby="project-portfolio-title"><p class="kicker">Portfolio completo</p><h2 id="project-portfolio-title">Trabajos publicados, realizados y explorados.</h2><div class="project-grid">${projects.map((project) => {
+    const external = project.href.startsWith('http')
+    const href = project.href.startsWith('/') ? link(project.href) : project.href
+    return `<article class="project-tile"><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ''}><div class="project-tile-image"><img src="${asset(project.image)}" alt="${project.alt}" loading="lazy" decoding="async"><span aria-hidden="true">↗</span></div><div class="project-tile-meta"><span>${project.sector}</span><small>${project.id === 'north-division' ? 'Concepto / demo' : 'Portfolio'}</small></div><h3>${project.name}</h3><p>${project.statement}</p></a></article>`
+  }).join('')}</div></section>`
+}
+
 function renderFaq(page) {
   if (!page.faq.length) return ''
   return `<section class="faq" aria-labelledby="faq-title"><p class="kicker">Preguntas frecuentes</p><h2 id="faq-title">Antes de empezar</h2>${page.faq.map(([question, answer]) => `<details><summary>${question}<span aria-hidden="true">+</span></summary><p>${answer}</p></details>`).join('')}</section>`
@@ -275,6 +285,8 @@ function renderPage(page) {
   <meta name="theme-color" content="#110c09">
   <link rel="canonical" href="${absolute(page.path)}">
   <link rel="icon" type="image/svg+xml" href="${asset('/favicon-quiroz.svg')}">
+  <link rel="manifest" href="${asset('/site.webmanifest')}">
+  <link rel="manifest" href="${asset('/site.webmanifest')}">
   <link rel="stylesheet" href="${asset('/seo-pages.css')}">
   <meta property="og:locale" content="es_ES">
   <meta property="og:type" content="website">
@@ -304,6 +316,7 @@ function renderPage(page) {
       <div class="hero-mark" aria-hidden="true"><img src="${asset('/isotipo-quiroz.jpg')}" width="340" height="265" alt=""></div>
     </header>
     <div class="trust-strip"><span>Diseño a medida</span><span>Mobile first</span><span>Pamplona · Navarra</span></div>
+    ${renderPortfolio(page)}
     <section class="content-list" aria-label="Información principal">${renderSections(page)}</section>
     ${renderFaq(page)}
     <section class="final-cta"><p class="kicker">Un proyecto con intención</p><h2>Tu negocio ya tiene una historia.<br>Vamos a hacer que se note.</h2><a class="primary" href="${link('/#contacto')}">Conocer a Quiroz <span aria-hidden="true">↗</span></a></section>
