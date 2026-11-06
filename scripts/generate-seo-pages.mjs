@@ -1,10 +1,11 @@
-import { copyFile, mkdir, writeFile } from 'node:fs/promises'
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
 const SITE = 'https://quirozstudio.es'
 const BASE = ''
 const OUTPUT = resolve('dist')
-const UPDATED = '2026-09-16'
+const UPDATED = new Date().toISOString().slice(0, 10)
+const projects = JSON.parse(await readFile(resolve('src/content/projects.json'), 'utf8'))
 
 const routes = [
   {
@@ -201,7 +202,7 @@ function schemaFor(page) {
       url: `${SITE}/`,
       logo: absolute('/isotipo-quiroz.jpg'),
       image: absolute('/og-quiroz.webp'),
-      founder: { '@type': 'Person', name: 'Bryans Astorga' },
+      founder: { '@id': `${SITE}/#person` },
       description: 'Diseño y desarrollo web, menús digitales QR y SEO local para hostelería y negocios locales.',
       areaServed: [
         { '@type': 'City', name: 'Pamplona' },
@@ -209,6 +210,14 @@ function schemaFor(page) {
       ],
       sameAs: ['https://github.com/quirozstudio'],
       knowsAbout: ['Diseño web', 'Desarrollo web', 'SEO local', 'Hostelería', 'Menús digitales QR'],
+    },
+    {
+      '@type': 'Person',
+      '@id': `${SITE}/#person`,
+      name: 'Bryans Astorga',
+      url: absolute('/sobre-mi/'),
+      jobTitle: 'Diseñador web',
+      worksFor: { '@id': `${SITE}/#business` },
     },
     {
       '@type': page.type === 'Service' ? 'WebPage' : page.type,
@@ -255,6 +264,15 @@ function renderSections(page) {
     </article>`).join('')
 }
 
+function renderPortfolio(page) {
+  if (page.path !== '/proyectos/') return ''
+  return `<section class="project-portfolio" aria-labelledby="project-portfolio-title"><div class="project-portfolio-heading"><p class="kicker">Portfolio completo</p><h2 id="project-portfolio-title">Trabajo publicado, realizado y explorado.</h2></div><div class="project-grid">${projects.map((project) => {
+    const external = project.href.startsWith('http')
+    const href = project.href.startsWith('/') ? link(project.href) : project.href
+    return `<article class="project-tile"><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ''}><div class="project-tile-image"><img src="${asset(project.image)}" alt="${project.alt}" loading="lazy" decoding="async"><span aria-hidden="true">↗</span></div><div class="project-tile-meta"><span>${project.sector}</span><small>${project.status}</small></div><h3>${project.name}</h3><p>${project.statement}</p></a></article>`
+  }).join('')}</div></section>`
+}
+
 function renderFaq(page) {
   if (!page.faq.length) return ''
   return `<section class="faq" aria-labelledby="faq-title"><p class="kicker">Preguntas frecuentes</p><h2 id="faq-title">Antes de empezar</h2>${page.faq.map(([question, answer]) => `<details><summary>${question}<span aria-hidden="true">+</span></summary><p>${answer}</p></details>`).join('')}</section>`
@@ -275,6 +293,7 @@ function renderPage(page) {
   <meta name="theme-color" content="#110c09">
   <link rel="canonical" href="${absolute(page.path)}">
   <link rel="icon" type="image/svg+xml" href="${asset('/favicon-quiroz.svg')}">
+  <link rel="manifest" href="${asset('/site.webmanifest')}">
   <link rel="stylesheet" href="${asset('/seo-pages.css')}">
   <meta property="og:locale" content="es_ES">
   <meta property="og:type" content="website">
@@ -283,11 +302,14 @@ function renderPage(page) {
   <meta property="og:description" content="${page.description}">
   <meta property="og:url" content="${absolute(page.path)}">
   <meta property="og:image" content="${image}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Quiroz Digital Studio, diseño web en Pamplona">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${page.title}">
   <meta name="twitter:description" content="${page.description}">
   <meta name="twitter:image" content="${image}">
+  <meta name="twitter:image:alt" content="Quiroz Digital Studio, diseño web en Pamplona">
   <script type="application/ld+json">${schema}</script>
   <script>document.documentElement.dataset.theme=localStorage.getItem('quiroz-theme')==='light'?'light':'dark'</script>
 </head>
@@ -304,11 +326,12 @@ function renderPage(page) {
       <div class="hero-mark" aria-hidden="true"><img src="${asset('/isotipo-quiroz.jpg')}" width="340" height="265" alt=""></div>
     </header>
     <div class="trust-strip"><span>Diseño a medida</span><span>Mobile first</span><span>Pamplona · Navarra</span></div>
+    ${renderPortfolio(page)}
     <section class="content-list" aria-label="Información principal">${renderSections(page)}</section>
     ${renderFaq(page)}
     <section class="final-cta"><p class="kicker">Un proyecto con intención</p><h2>Tu negocio ya tiene una historia.<br>Vamos a hacer que se note.</h2><a class="primary" href="${link('/#contacto')}">Conocer a Quiroz <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer><a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a><p>Diseño web para hostelería y negocios locales en Pamplona.</p><nav aria-label="Enlaces del pie"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}">Sobre mí</a></nav></footer>
+  <footer><a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a><p>Diseño web para hostelería y negocios locales en Pamplona.</p><nav aria-label="Enlaces del pie"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}">Sobre mí</a><a href="${link('/zonas/pamplona/')}">Pamplona</a></nav></footer>
   <script>
     const button=document.querySelector('.theme-button');
     button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;localStorage.setItem('quiroz-theme',next)});

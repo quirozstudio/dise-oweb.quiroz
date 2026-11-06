@@ -1,0 +1,18 @@
+{
+  "name": "Quiroz Digital Studio",
+  "short_name": "Quiroz Studio",
+  "description": "Diseño web, identidad digital y soluciones a medida para negocios locales.",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#242725",
+  "theme_color": "#242725",
+  "icons": [
+    {
+      "src": "/favicon-quiroz.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
