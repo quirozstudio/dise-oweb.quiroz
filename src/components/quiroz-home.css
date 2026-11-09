@@ -305,6 +305,9 @@
 .qh-footer-social { gap: 3px; }
 .qh-footer-social a { display: grid; place-items: center; width: 44px; height: 44px; }
 .qh-footer-social svg { width: 20px; height: 20px; }
+.qh-footer-intro { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 9px; border: 0; background: transparent; color: var(--ink); font-size: 12px; cursor: pointer; }
+.qh-footer-intro:hover { color: var(--gold); }
+.qh-footer-intro svg { width: 14px; height: 14px; color: var(--gold); }
 .qh-footer-bottom { margin-top: 12px; padding-top: 15px; border-top: 1px solid var(--line); }
 .qh-footer small { color: #d5cec4; }
 .qh-reveal { opacity: 1; transform: none; }

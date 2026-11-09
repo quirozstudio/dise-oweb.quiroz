@@ -1,0 +1,222 @@
+.qi-intro {
+  --qi-gold: #e2b784;
+  --qi-duration: 2600ms;
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  color: #f7eee3;
+  background:
+    radial-gradient(ellipse at 70% 17%, #291e17 0%, transparent 43%),
+    radial-gradient(ellipse at 18% 86%, #1c1713 0%, transparent 42%),
+    #0e0d0c;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+.qi-intro:not([open]) { display: none; }
+.qi-intro::backdrop { background: transparent; }
+.qi-intro.is-exiting { opacity: 0; }
+
+.qi-intro-art {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.qi-intro-art::before {
+  content: '';
+  position: absolute;
+  inset: clamp(15px, 3.5vw, 54px);
+  background:
+    linear-gradient(#cba77977, #cba77977) left top / 20px 1px,
+    linear-gradient(#cba77977, #cba77977) left top / 1px 20px,
+    linear-gradient(#cba77977, #cba77977) right top / 20px 1px,
+    linear-gradient(#cba77977, #cba77977) right top / 1px 20px,
+    linear-gradient(#cba77977, #cba77977) left bottom / 20px 1px,
+    linear-gradient(#cba77977, #cba77977) left bottom / 1px 20px,
+    linear-gradient(#cba77977, #cba77977) right bottom / 20px 1px,
+    linear-gradient(#cba77977, #cba77977) right bottom / 1px 20px;
+  background-repeat: no-repeat;
+  opacity: .65;
+}
+
+.qi-intro .qi-intro-dial {
+  grid-area: 1 / 1;
+  z-index: 1;
+  display: block;
+  width: clamp(370px, min(74vw, 95vh), 920px);
+  width: clamp(370px, min(74vw, 95svh), 920px);
+  max-width: none;
+  height: auto;
+  overflow: visible;
+  animation: qi-intro-approach 1800ms cubic-bezier(.18,.64,.3,1) both;
+}
+
+.qi-intro-rotor {
+  transform-origin: 50% 50%;
+  animation: qi-intro-turn 2400ms cubic-bezier(.19,.68,.2,1) both;
+}
+
+.qi-intro-hot-edge {
+  filter: drop-shadow(0 0 6px #ebaf73);
+  animation: qi-intro-trace 1500ms 120ms ease both;
+}
+
+.qi-intro-beam {
+  grid-area: 1 / 1;
+  width: 115%;
+  height: 68%;
+  background: radial-gradient(ellipse, #cf8c4d38, #84552d15 43%, transparent 68%);
+  transform: translate(12%, -18%) rotate(-24deg);
+  animation: qi-intro-sweep 2100ms ease-out both;
+}
+
+.qi-intro-horizon {
+  position: absolute;
+  z-index: 2;
+  inset: 50% 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, #bc8b59a0 29%, transparent 43% 57%, #bc8b59a0 71%, transparent 95%);
+  animation: qi-intro-trace 1100ms 220ms ease both;
+}
+
+.qi-intro-content {
+  position: relative;
+  z-index: 3;
+  width: min(100% - 36px, 1240px);
+  text-align: center;
+}
+
+.qi-intro-kicker {
+  margin: 0 0 clamp(14px, 2vw, 25px);
+  color: #eac79d;
+  font: 650 clamp(10px, 1vw, 14px)/1.4 Arial, sans-serif;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  animation: qi-intro-type 850ms 150ms ease-out both;
+}
+
+.qi-intro-title {
+  margin: 0;
+  color: #f7efe6;
+  font: 600 clamp(29px, 9.1vw, 125px)/.92 Arial, sans-serif;
+  letter-spacing: -.063em;
+  text-shadow: 0 4px 22px #090807b3;
+  animation: qi-intro-type 1100ms cubic-bezier(.2,.65,.3,1) both;
+}
+
+.qi-intro-title span { color: var(--qi-gold); }
+
+.qi-intro-line {
+  margin: clamp(16px, 2vw, 27px) 0 0;
+  color: #eee1d2;
+  font: italic clamp(17px, 2vw, 28px)/1.28 Georgia, 'Times New Roman', serif;
+  animation: qi-intro-type 900ms 460ms ease-out both;
+}
+
+.qi-intro-skip {
+  position: absolute;
+  z-index: 4;
+  right: max(clamp(22px, 5vw, 82px), env(safe-area-inset-right));
+  bottom: max(clamp(22px, 5vh, 64px), calc(env(safe-area-inset-bottom) + 12px));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 8px 15px;
+  border: 1px solid #bd926166;
+  border-radius: 7px;
+  background: #151210;
+  color: #f4e5d4;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.qi-intro-skip:hover { border-color: var(--qi-gold); color: var(--qi-gold); }
+.qi-intro-skip:focus-visible { outline: 2px solid var(--qi-gold); outline-offset: 4px; }
+.qi-intro .qi-intro-skip svg { width: 15px; height: 15px; }
+
+.qi-intro-progress {
+  position: absolute;
+  z-index: 4;
+  bottom: max(clamp(43px, 7vh, 85px), calc(env(safe-area-inset-bottom) + 33px));
+  left: max(clamp(22px, 5vw, 82px), env(safe-area-inset-left));
+  width: clamp(54px, 11vw, 180px);
+  height: 1px;
+  background: #c79e704a;
+}
+
+.qi-intro-progress::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #896442, #f0c58e);
+  transform-origin: left;
+  animation: qi-intro-progress var(--qi-duration) linear both;
+}
+
+@keyframes qi-intro-approach {
+  from { opacity: .48; transform: scale(1.15); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes qi-intro-turn {
+  from { transform: rotate(-29deg); }
+  to { transform: rotate(0); }
+}
+
+@keyframes qi-intro-trace {
+  from { opacity: .15; }
+  58% { opacity: 1; }
+  to { opacity: .74; }
+}
+
+@keyframes qi-intro-sweep {
+  from { opacity: .2; transform: translate(-28%, 19%) rotate(-24deg); }
+  53% { opacity: 1; }
+  to { opacity: .8; transform: translate(12%, -18%) rotate(-24deg); }
+}
+
+@keyframes qi-intro-type {
+  from { opacity: 0; transform: translateY(11px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes qi-intro-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (max-width: 700px) {
+  .qi-intro .qi-intro-dial { width: clamp(340px, 110vw, 600px); }
+  .qi-intro-title { letter-spacing: -.055em; }
+  .qi-intro-art::before { opacity: .45; }
+}
+
+@media (max-height: 430px) and (orientation: landscape) {
+  .qi-intro .qi-intro-dial { width: min(64vw, 95vh); }
+  .qi-intro-title { font-size: clamp(29px, 12vh, 65px); }
+  .qi-intro-kicker, .qi-intro-line { margin-block: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qi-intro { transition: none; }
+  .qi-intro-progress::after,
+  .qi-intro :is(.qi-intro-dial, .qi-intro-rotor, .qi-intro-hot-edge, .qi-intro-beam, .qi-intro-horizon, .qi-intro-kicker, .qi-intro-title, .qi-intro-line) { animation: none; }
+}

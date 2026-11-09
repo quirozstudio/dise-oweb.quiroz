@@ -11,12 +11,13 @@ class MonitorBoundary extends Component<{ children: ReactNode }, { failed: boole
   render() { return this.state.failed ? null : this.props.children }
 }
 
-export function HeroMonitor() {
+export function HeroMonitor({ defer = false }: { defer?: boolean }) {
   const stage = useRef<HTMLDivElement>(null)
   const [motion, setMotion] = useState<'pending' | 'reduced' | 'full'>('pending')
   const [contextLost, setContextLost] = useState(false)
 
   useEffect(() => {
+    if (defer) return
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
     const update = () => setMotion(preference.matches ? 'reduced' : 'full')
     const timer = window.setTimeout(update, 180)
@@ -25,7 +26,7 @@ export function HeroMonitor() {
       window.clearTimeout(timer)
       preference.removeEventListener('change', update)
     }
-  }, [])
+  }, [defer])
 
   useEffect(() => {
     const element = stage.current
