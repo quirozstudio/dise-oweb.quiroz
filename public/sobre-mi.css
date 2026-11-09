@@ -1,0 +1,110 @@
+.about-page {
+  --about-gutter: clamp(20px, 7.75vw, 150px);
+  --about-space: clamp(44px, 6vw, 104px);
+  --about-editorial: Georgia, 'Times New Roman', serif;
+}
+
+.about-page :is(h1, h2) {
+  margin: 0;
+  font-family: var(--about-editorial);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.about-page h2 { font-size: clamp(34px, 4vw, 67px); line-height: 1.02; }
+.about-page .kicker { margin: 0 0 16px; }
+
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  align-items: center;
+  gap: clamp(32px, 7vw, 112px);
+  padding: var(--about-space) var(--about-gutter);
+  background: radial-gradient(ellipse at 80% 42%, #ae764225, transparent 56%), var(--bg);
+}
+
+.about-hero h1 { max-width: 11ch; font-size: clamp(54px, 7vw, 112px); line-height: .94; }
+.about-role { margin: 18px 0 14px; color: var(--gold); font: italic clamp(22px, 2.45vw, 36px)/1.2 var(--about-editorial); }
+.about-lead { max-width: 46ch; margin: 0; color: var(--muted); font-size: clamp(16px, 1.35vw, 21px); line-height: 1.62; }
+.about-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
+
+.about-page :is(.about-button, .about-link) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.about-page .about-button { padding: 10px 16px; border-radius: 7px; background: #e2b47c; color: #20160d; }
+.about-page .about-button:hover { background: #efc796; }
+.about-page .about-link { color: var(--text); border-bottom: 1px solid var(--gold); }
+.about-page .about-link:hover { color: var(--gold); }
+
+.about-portrait { min-width: 0; margin: 0; }
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.08;
+  object-fit: cover;
+  object-position: 50% 39%;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+}
+.about-portrait figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 16px;
+  padding-top: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.about-portrait figcaption span:first-child { color: var(--gold); }
+
+.about-story, .about-method, .about-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(18px, 5vw, 78px);
+  padding: var(--about-space) var(--about-gutter);
+}
+.about-story { --gold: #774b28; --muted: #544638; background: #eee5d7; color: #241d17; }
+.about-prose > p, .about-contact p:not(.kicker) { max-width: 62ch; margin: 0; color: var(--muted); font-size: clamp(16px, 1.15vw, 19px); line-height: 1.7; }
+.about-prose > p + p { margin-top: 14px; }
+.about-prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 4px; }
+
+.about-services { padding: var(--about-space) var(--about-gutter); }
+.about-service-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 clamp(20px, 2.75vw, 44px);
+  margin: 27px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.about-service-list li { display: flex; flex-direction: column; align-items: flex-start; padding: 17px 0 9px; border-top: 1px solid var(--line); }
+.about-service-list h3 { margin: 0 0 10px; font: 400 clamp(23px, 2vw, 32px)/1.15 var(--about-editorial); }
+.about-service-list p { margin: 0 0 13px; color: var(--muted); line-height: 1.55; }
+.about-service-list a { margin-top: auto; }
+
+.about-method { border-block: 1px solid var(--line); background: var(--surface); }
+.about-contact { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.about-contact p:not(.kicker) { margin-top: 12px; }
+
+@media (max-width: 760px) {
+  .about-hero, .about-story, .about-method, .about-contact { grid-template-columns: minmax(0, 1fr); }
+  .about-hero { gap: 28px; }
+  .about-hero h1 { font-size: clamp(49px, 11vw, 75px); }
+  .about-portrait { width: min(100%, 510px); }
+  .about-portrait img { aspect-ratio: 1.22; }
+  .about-service-list { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .about-service-list li { padding-block: 15px 12px; }
+}
