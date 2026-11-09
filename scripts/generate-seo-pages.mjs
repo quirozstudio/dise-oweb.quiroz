@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto'
 import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
@@ -142,14 +143,13 @@ const routes = [
     type: 'AboutPage',
     title: 'Bryans Astorga, diseñador web en Pamplona | Quiroz',
     description: 'Conoce a Bryans Astorga, creador de Quiroz Digital Studio y diseñador web especializado en hostelería y negocios locales de Pamplona.',
-    eyebrow: 'Sobre Quiroz Digital Studio',
-    h1: 'Diseño directamente contigo para convertir tu negocio en una marca digital reconocible.',
-    intro: 'Soy Bryans Astorga y trabajo desde Pamplona combinando estrategia, diseño y desarrollo. Mi especialización nace de entender la hostelería desde dentro y de cuidar cada proyecto sin pasarlo por departamentos.',
+    eyebrow: 'Sobre mí · Pamplona, Navarra',
+    h1: 'Soy Bryans Astorga.',
+    intro: 'Creé Quiroz Studio para ayudar a restaurantes, bares y negocios locales a tener una web que refleje el cuidado que ponen en su trabajo.',
     sections: [
-      ['Una relación directa', 'La persona que escucha el proyecto es la misma que define la dirección visual y construye la web. Eso reduce pérdidas de información y mantiene una intención coherente de principio a fin.'],
-      ['Diseño con una función', 'El movimiento, la tipografía y las imágenes no se añaden para decorar. Cada decisión debe ayudar a expresar el nivel del negocio, ordenar la información o facilitar una acción.'],
-      ['Especialización local', 'Trabajo principalmente con restaurantes, bares y negocios locales de Pamplona y Navarra que necesitan una presencia más cuidada y cercana a su valor real.'],
-      ['Cómo trabajaremos', 'Descubrir, dirigir, construir y lanzar: un proceso sencillo de entender, con decisiones compartidas y atención especial a móvil, rendimiento y visibilidad.'],
+      ['Diseño y desarrollo web', 'Diseño y construyo webs a medida que explican qué ofreces y facilitan que te contacten desde el móvil.', '/servicios/diseno-web-restaurantes/'],
+      ['Cartas QR y reservas', 'Preparo cartas digitales fáciles de consultar y conecto la web con las reservas o el canal de contacto que ya utilizas.', '/servicios/menus-digitales-qr/'],
+      ['Visibilidad local', 'Organizo la web para que quien busca tu negocio en Pamplona encuentre lo que necesita: servicios, horarios, ubicación y contacto.', '/servicios/seo-local/'],
     ],
     faq: [],
   },
@@ -177,6 +177,12 @@ const routes = [
 const absolute = (path = '/') => `${SITE}${path}`
 const asset = (path) => `${BASE}${path}`
 const link = (path) => `${BASE}${path}`
+
+const [sharedStyles, aboutStyles] = await Promise.all(['seo-pages.css', 'sobre-mi.css'].map(async file => {
+  const contents = await readFile(resolve(OUTPUT, file))
+  const version = createHash('sha256').update(contents).digest('hex').slice(0, 12)
+  return `${asset('/' + file)}?v=${version}`
+}))
 
 const escapeJson = (value) => JSON.stringify(value).replaceAll('<', '\\u003c')
 
@@ -213,7 +219,7 @@ function schemaFor(page) {
       name: page.title,
       description: page.description,
       isPartOf: { '@id': `${SITE}/#website` },
-      about: { '@id': `${SITE}/#business` },
+      about: { '@id': page.type === 'AboutPage' ? `${SITE}/#bryans` : `${SITE}/#business` },
       primaryImageOfPage: page.image ? { '@type': 'ImageObject', contentUrl: absolute(page.image) } : undefined,
     },
     {
@@ -224,6 +230,17 @@ function schemaFor(page) {
       ],
     },
   ]
+  if (page.type === 'AboutPage') {
+    items.push({
+      '@type': 'Person',
+      '@id': `${SITE}/#bryans`,
+      name: 'Bryans Astorga',
+      url: absolute(page.path),
+      image: absolute('/bryan-quiroz.jpg'),
+      jobTitle: 'Diseñador y desarrollador web',
+      worksFor: { '@id': `${SITE}/#business` },
+    })
+  }
   if (page.type === 'Service') {
     items.push({
       '@type': 'Service',
@@ -272,9 +289,55 @@ function renderFaq(page) {
   return `<section class="faq" aria-labelledby="faq-title"><p class="kicker">Preguntas frecuentes</p><h2 id="faq-title">Antes de empezar</h2>${page.faq.map(([question, answer]) => `<details><summary>${question}<span aria-hidden="true">+</span></summary><p>${answer}</p></details>`).join('')}</section>`
 }
 
+function renderAbout(page) {
+  return `
+    <header class="about-hero">
+      <div class="about-hero-copy">
+        <p class="kicker">${page.eyebrow}</p>
+        <h1>${page.h1}</h1>
+        <p class="about-role">Diseñador y desarrollador web.</p>
+        <p class="about-lead">${page.intro}</p>
+        <div class="about-actions">
+          <a class="about-button" href="${link('/#contacto')}">Hablemos de tu negocio <span aria-hidden="true">↗</span></a>
+          <a class="about-link" href="${link('/proyectos/')}">Ver mis proyectos <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="about-portrait">
+        <img src="${asset('/bryan-quiroz.jpg')}" alt="Bryans Astorga trabajando en su estudio" width="576" height="1280" fetchpriority="high" decoding="async">
+        <figcaption><span>Bryans Astorga</span><span>Quiroz Studio · Pamplona</span></figcaption>
+      </figure>
+    </header>
+    <section class="about-story" aria-labelledby="about-story-title">
+      <div><p class="kicker">Mi enfoque</p><h2 id="about-story-title">Una web tiene que resolver algo.</h2></div>
+      <div class="about-prose">
+        <p>Me gusta entender qué necesita la persona que llega a tu web. En un restaurante puede ser consultar la carta o reservar una mesa. En un negocio de servicios, saber qué haces y cómo ponerse en contacto contigo.</p>
+        <p>A partir de ahí doy forma al contenido, al diseño y a la navegación. El objetivo es que la web tenga el carácter de tu negocio y sea fácil de usar.</p>
+      </div>
+    </section>
+    <section class="about-services" aria-labelledby="about-services-title">
+      <p class="kicker">En qué puedo ayudarte</p>
+      <h2 id="about-services-title">Lo que hago</h2>
+      <ul class="about-service-list">${page.sections.map(([title, copy, href]) => `
+        <li><h3>${title}</h3><p>${copy}</p><a class="about-link" href="${link(href)}" aria-label="Ver servicio: ${title}">Ver servicio <span aria-hidden="true">↗</span></a></li>
+      `).join('')}</ul>
+    </section>
+    <section class="about-method" aria-labelledby="about-method-title">
+      <div><p class="kicker">Cómo trabajo</p><h2 id="about-method-title">Hablas directamente conmigo.</h2></div>
+      <div class="about-prose">
+        <p>Primero hablamos de tu negocio y de lo que quieres mejorar. Después te propongo una dirección, diseño la web y la desarrollo. Antes de publicarla, la revisamos juntos y comprobamos que las acciones importantes funcionan, especialmente en móvil.</p>
+        <p>Además de los proyectos para clientes, desarrollo ideas propias como <a href="https://quirozstudio.github.io/camarero-cursoquiroz/" target="_blank" rel="noreferrer">Primer Turno</a>, un curso para preparar el primer turno como camarero.</p>
+      </div>
+    </section>
+    <section class="about-contact" aria-labelledby="about-contact-title">
+      <div><p class="kicker">Contacto</p><h2 id="about-contact-title">Cuéntame qué necesitas.</h2><p>Podemos empezar por una idea, una web que quieras mejorar o un problema concreto que resolver.</p></div>
+      <a class="about-button" href="${link('/#contacto')}">Hablar con Bryans <span aria-hidden="true">↗</span></a>
+    </section>`
+}
+
 function renderPage(page) {
   const image = page.image ? absolute(page.image) : absolute('/og-quiroz.webp')
   const schema = escapeJson(schemaFor(page))
+  const about = page.type === 'AboutPage'
   return `<!doctype html>
 <html lang="es" data-theme="dark">
 <head>
@@ -288,8 +351,8 @@ function renderPage(page) {
   <link rel="canonical" href="${absolute(page.path)}">
   <link rel="icon" type="image/svg+xml" href="${asset('/favicon-quiroz.svg')}">
   <link rel="manifest" href="${asset('/site.webmanifest')}">
-  <link rel="manifest" href="${asset('/site.webmanifest')}">
-  <link rel="stylesheet" href="${asset('/seo-pages.css')}">
+  <link rel="stylesheet" href="${sharedStyles}">
+  ${about ? `<link rel="stylesheet" href="${aboutStyles}">` : ''}
   <meta property="og:locale" content="es_ES">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Quiroz Digital Studio">
@@ -309,10 +372,11 @@ function renderPage(page) {
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a>
-    <nav aria-label="Navegación principal"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}">Sobre mí</a><a href="${link('/zonas/pamplona/')}">Pamplona</a></nav>
+    <nav aria-label="Navegación principal"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}"${about ? ' aria-current="page"' : ''}>Sobre mí</a><a href="${link('/zonas/pamplona/')}">Pamplona</a></nav>
     <button class="theme-button" type="button" aria-label="Cambiar tema">◐</button>
   </header>
-  <main id="contenido">
+  <main id="contenido"${about ? ' class="about-page"' : ''} tabindex="-1">
+    ${about ? renderAbout(page) : `
     <header class="page-hero">
       <div class="hero-copy"><p class="kicker">${page.eyebrow}</p><h1>${page.h1}</h1><p>${page.intro}</p><a class="primary" href="${link('/#contacto')}">Hablar sobre mi proyecto <span aria-hidden="true">↗</span></a></div>
       <div class="hero-mark" aria-hidden="true"><img src="${asset('/isotipo-quiroz.jpg')}" width="340" height="265" alt=""></div>
@@ -321,7 +385,7 @@ function renderPage(page) {
     ${renderPortfolio(page)}
     <section class="content-list" aria-label="Información principal">${renderSections(page)}</section>
     ${renderFaq(page)}
-    <section class="final-cta"><p class="kicker">Un proyecto con intención</p><h2>Tu negocio ya tiene una historia.<br>Vamos a hacer que se note.</h2><a class="primary" href="${link('/#contacto')}">Conocer a Quiroz <span aria-hidden="true">↗</span></a></section>
+    <section class="final-cta"><p class="kicker">Un proyecto con intención</p><h2>Tu negocio ya tiene una historia.<br>Vamos a hacer que se note.</h2><a class="primary" href="${link('/#contacto')}">Conocer a Quiroz <span aria-hidden="true">↗</span></a></section>`}
   </main>
   <footer><a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a><p>Diseño web para hostelería y negocios locales en Pamplona.</p><nav aria-label="Enlaces del pie"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}">Sobre mí</a></nav></footer>
   <script>
@@ -346,5 +410,5 @@ const urls = ['/', ...routes.map((route) => route.path)]
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((path, index) => `  <url><loc>${absolute(path)}</loc><lastmod>${UPDATED}</lastmod><changefreq>${index === 0 ? 'weekly' : 'monthly'}</changefreq><priority>${index === 0 ? '1.0' : path === '/servicios/' || path === '/proyectos/' ? '0.8' : '0.7'}</priority></url>`).join('\n')}\n</urlset>\n`
 await writeFile(resolve(OUTPUT, 'sitemap.xml'), sitemap, 'utf8')
 
-const notFound = `<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Página no encontrada | Quiroz</title><meta name="robots" content="noindex,follow"><link rel="icon" type="image/svg+xml" href="${asset('/favicon-quiroz.svg')}"><link rel="stylesheet" href="${asset('/seo-pages.css')}"></head><body><main class="not-found"><p class="kicker">Error 404</p><h1>Esta página no existe.</h1><p>Puede que el enlace haya cambiado o que la dirección no sea correcta.</p><a class="primary" href="${link('/')}">Volver al estudio</a></main></body></html>`
+const notFound = `<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Página no encontrada | Quiroz</title><meta name="robots" content="noindex,follow"><link rel="icon" type="image/svg+xml" href="${asset('/favicon-quiroz.svg')}"><link rel="stylesheet" href="${sharedStyles}"></head><body><main class="not-found"><p class="kicker">Error 404</p><h1>Esta página no existe.</h1><p>Puede que el enlace haya cambiado o que la dirección no sea correcta.</p><a class="primary" href="${link('/')}">Volver al estudio</a></main></body></html>`
 await writeFile(resolve(OUTPUT, '404.html'), notFound, 'utf8')
