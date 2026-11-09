@@ -278,7 +278,7 @@ function renderPortfolio(page) {
     ).join('')
     return `<article class="project-tile"><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ''}><div class="project-tile-image"><img src="${asset(project.image)}" alt="${project.alt}" loading="lazy" decoding="async"><span aria-hidden="true">↗</span></div><div class="project-tile-meta">${project.sector}</div><h4>${project.name}</h4><p>${project.statement}</p></a>${actions ? `<div class="project-tile-actions">${actions}</div>` : ''}</article>`
   }
-  const groups = [['client', 'Trabajos para clientes'], ['own', 'Proyectos propios']]
+  const groups = [['client', 'Marcas que confían en Quiroz'], ['own', 'Proyectos propios']]
   return `<section class="project-portfolio" aria-labelledby="project-portfolio-title"><p class="kicker">Portfolio completo</p><h2 id="project-portfolio-title">Proyectos con carácter</h2>${groups.map(([group, title]) =>
     `<section class="project-group" aria-labelledby="project-group-${group}"><h3 id="project-group-${group}">${title}</h3><div class="project-grid">${projects.filter(project => project.group === group).map(renderTile).join('')}</div></section>`
   ).join('')}</section>`

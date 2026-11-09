@@ -103,7 +103,7 @@ export function HomePortfolio({ items }: { items: readonly Project[] }) {
           <h2 id="qhp-title">Proyectos con carácter</h2>
           <a className="qhp-all" href={base + 'proyectos/'}>Ver todos los proyectos <ArrowUpRight aria-hidden="true" /></a>
         </header>
-        <PortfolioRow id="qhp-clientes" title="Trabajos para clientes" items={items.filter(project => project.group === 'client')} />
+        <PortfolioRow id="qhp-clientes" title="Marcas que confían en Quiroz" items={items.filter(project => project.group === 'client')} />
         <PortfolioRow id="qhp-propios" title="Proyectos propios" items={items.filter(project => project.group === 'own')} />
       </div>
     </section>
