@@ -1,49 +1,106 @@
-import { useEffect, useState } from 'react'
-import { ArrowDown, ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import type { FormEvent } from 'react'
+import {
+  ArrowUpRight, Award, CalendarDays, ChartNoAxesColumnIncreasing, ChevronRight,
+  CodeXml, Heart, Laptop, Layers2, MapPin, Menu, MessageCircle, Monitor, Moon,
+  QrCode, Sun, Target, UsersRound, X, Zap,
+} from 'lucide-react'
 import projects from '@/content/projects.json'
-import { PortfolioGrid } from './portfolio'
+import { HomePortfolio } from './quiroz-home-portfolio'
+import { HeroMonitor } from './quiroz-hero-monitor'
 import './quiroz-home.css'
 
 const BASE = import.meta.env.BASE_URL
-const WHATSAPP = '34618905239'
-const whatsapp = `https://wa.me/${WHATSAPP}`
-const assets = {
-  mark: `${BASE}isotipo-quiroz.jpg`,
-  hero: `${BASE}quiroz-hero-architecture.webp`,
-  portrait: `${BASE}bryan-quiroz.jpg`,
-}
+const whatsapp = 'https://wa.me/34618905239'
+const contactHref = whatsapp + '?text=' + encodeURIComponent('Hola Bryans, me gustaría hablar sobre un proyecto.')
+const links = [
+  ['Proyectos', 'proyectos/'],
+  ['Servicios', 'servicios/'],
+  ['Sobre mí', 'sobre-mi/'],
+  ['Pamplona', 'zonas/pamplona/'],
+] as const
 
 const services = [
-  ['01', 'Diseño y desarrollo web', 'Webs a medida que explican mejor tu negocio, transmiten confianza y funcionan desde el móvil.', `${BASE}servicios/diseno-web-restaurantes/`],
-  ['02', 'Cartas y soluciones QR', 'Experiencias digitales claras, actualizables y coherentes con la identidad del local.', `${BASE}servicios/menus-digitales-qr/`],
-  ['03', 'SEO local y continuidad', 'Una base técnica cuidada y acompañamiento para que tu presencia digital siga teniendo sentido.', `${BASE}servicios/seo-local/`],
-]
+  [Laptop, 'Diseño web', 'Una web rápida, a medida y adaptada a tu negocio.', BASE + 'servicios/diseno-web-restaurantes/'],
+  [QrCode, 'Cartas QR', 'Digitaliza tu carta y facilita su consulta desde el móvil.', BASE + 'servicios/menus-digitales-qr/'],
+  [CalendarDays, 'Reservas online', 'Integra reservas y accesos directos de contacto.', '#contacto'],
+  [ChartNoAxesColumnIncreasing, 'Visibilidad local', 'Ayuda a que te encuentren cuando buscan en tu zona.', BASE + 'servicios/seo-local/'],
+] as const
 
 const process = [
-  ['01', 'Conversamos', 'Entiendo tu negocio, tu público y el momento en el que está.'],
-  ['02', 'Definimos', 'Ordenamos prioridades y elegimos una solución proporcionada.'],
-  ['03', 'Construimos', 'Diseño y desarrollo la experiencia con atención al detalle.'],
-  ['04', 'Acompañamos', 'Publicamos, revisamos y dejamos una base fácil de mantener.'],
-]
+  ['Hablamos', 'Conocemos tu negocio y tus objetivos.'],
+  ['Diseñamos', 'Creamos una propuesta visual y funcional.'],
+  ['Desarrollamos', 'Construimos y probamos la web.'],
+  ['Lanzamos', 'Publicamos y te acompañamos después.'],
+] as const
+
+const aboutPoints = [
+  [Heart, 'Cercanía real', 'Acompañamiento en todo el proceso.'],
+  [Target, 'Objetivos claros', 'Cada decisión responde a lo que necesita tu negocio.'],
+  [MapPin, 'Conocimiento local', 'Desde Pamplona, para negocios de toda España.'],
+] as const
+
+const advantages = [
+  [Award, 'Diseño con identidad', 'Webs alineadas con la voz y el carácter de tu marca.'],
+  [Zap, 'Rápidas y adaptadas', 'Preparadas para el móvil y los buscadores.'],
+  [UsersRound, 'Acompañamiento real', 'Soporte, mantenimiento y mejoras.'],
+  [MapPin, 'Desde Pamplona', 'Una visión local y un trato cercano.'],
+] as const
 
 function Brand() {
-  return <a className="qh-brand" href={BASE} aria-label="Quiroz Studio, inicio"><img src={assets.mark} alt="" width="340" height="265" /><span>QUIROZ<small>Digital Studio</small></span></a>
+  return (
+    <a className="qh-header-wordmark" href={BASE} aria-label="Quiroz Studio, inicio">QUIROZ <span>STUDIO.</span></a>
+  )
+}
+
+function FeatureList({ items, className }: {
+  items: typeof aboutPoints | typeof advantages
+  className: string
+}) {
+  return (
+    <ul className={className}>
+      {items.map(([Icon, title, description]) => (
+        <li key={title}>
+          <Icon aria-hidden="true" />
+          <div><h3>{title}</h3><p>{description}</p></div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
+  return links.map(([label, path]) => (
+    <a key={path} href={BASE + path} onClick={onNavigate}>{label}</a>
+  ))
 }
 
 function ContactForm() {
-  const [sent, setSent] = useState(false)
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [prepared, setPrepared] = useState(false)
+  const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const name = String(data.get('name') || '').trim()
     const idea = String(data.get('idea') || '').trim()
-    window.open(`${whatsapp}?text=${encodeURIComponent(`Hola Bryans, soy ${name}. ${idea}`)}`, '_blank', 'noopener,noreferrer')
-    setSent(true)
+    const message = encodeURIComponent('Hola Bryans, soy ' + name + '. ' + idea)
+    window.open(whatsapp + '?text=' + message, '_blank', 'noopener,noreferrer')
+    setPrepared(true)
   }
-  return <form className="qh-contact-form" onSubmit={submit}><label><span>Tu nombre</span><input name="name" required autoComplete="name" placeholder="Cómo te llamas" /></label><label><span>Cuéntame tu proyecto</span><textarea name="idea" required rows={5} placeholder="Qué necesitas, qué estás imaginando o qué quieres mejorar" /></label><div><button type="submit">Abrir conversación <ArrowUpRight aria-hidden="true" /></button>{sent && <p role="status">WhatsApp se ha abierto con tu mensaje preparado.</p>}</div></form>
+
+  return (
+    <form className="qh-contact-form" onSubmit={submit} onChange={() => setPrepared(false)}>
+      <p className="qh-kicker">Cuéntame tu idea</p>
+      <label><span>Tu nombre</span><input name="name" required autoComplete="name" placeholder="Cómo te llamas" /></label>
+      <label><span>Tu proyecto</span><textarea name="idea" required rows={4} placeholder="Qué te gustaría crear o mejorar" /></label>
+      <button className="qh-button" type="submit">Abrir WhatsApp <ArrowUpRight aria-hidden="true" /></button>
+      {prepared && <p role="status">Mensaje preparado para continuar en WhatsApp.</p>}
+    </form>
+  )
 }
 
 export function QuirozHome() {
+  const shell = useRef<HTMLElement>(null)
+  const menuButton = useRef<HTMLButtonElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     try { return localStorage.getItem('quiroz-theme') === 'light' ? 'light' : 'dark' } catch { return 'dark' }
@@ -53,35 +110,171 @@ export function QuirozHome() {
     document.title = 'Diseño web en Pamplona para negocios locales | Quiroz'
     document.documentElement.dataset.theme = theme
     document.documentElement.style.colorScheme = theme
-    try { localStorage.setItem('quiroz-theme', theme) } catch { /* storage may be disabled */ }
+    try { localStorage.setItem('quiroz-theme', theme) } catch { /* Storage can be disabled. */ }
   }, [theme])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle('is-visible', entry.isIntersecting)), { threshold: .15 })
-    document.querySelectorAll('.qh-reveal').forEach((element) => observer.observe(element))
-    return () => observer.disconnect()
+  useLayoutEffect(() => {
+    const root = shell.current
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (!root || media.matches || !('IntersectionObserver' in window)) return
+
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue
+        entry.target.classList.add('is-visible')
+        observer.unobserve(entry.target)
+      }
+    }, { threshold: 0.12 })
+
+    root.querySelectorAll('.qh-reveal').forEach(element => observer.observe(element))
+    root.classList.add('qh-motion-ready')
+    return () => {
+      observer.disconnect()
+      root.classList.remove('qh-motion-ready')
+    }
   }, [])
 
-  const closeMenu = () => setMenuOpen(false)
-  const featured = projects.slice(0, 4)
+  useEffect(() => {
+    if (!menuOpen) return
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setMenuOpen(false)
+      menuButton.current?.focus()
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [menuOpen])
 
-  return <main className="qh-shell">
-    <header className="qh-header"><Brand /><nav className="qh-nav" aria-label="Navegación principal"><a href={`${BASE}proyectos/`}>Proyectos</a><a href={`${BASE}servicios/`}>Servicios</a><a href={`${BASE}sobre-mi/`}>Sobre mí</a><a href={`${BASE}zonas/pamplona/`}>Pamplona</a></nav><div className="qh-actions"><button type="button" className="qh-theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Activar modo ${theme === 'dark' ? 'claro' : 'oscuro'}`}>{theme === 'dark' ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}</button><a className="qh-header-cta" href="#contacto">Hablemos <ArrowUpRight aria-hidden="true" /></a><button type="button" className="qh-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>{menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</button></div>{menuOpen && <nav className="qh-mobile-nav" aria-label="Navegación móvil"><a href={`${BASE}proyectos/`} onClick={closeMenu}>Proyectos</a><a href={`${BASE}servicios/`} onClick={closeMenu}>Servicios</a><a href={`${BASE}sobre-mi/`} onClick={closeMenu}>Sobre mí</a><a href={`${BASE}zonas/pamplona/`} onClick={closeMenu}>Pamplona</a><a href="#contacto" onClick={closeMenu}>Hablemos</a></nav>}</header>
+  return (
+    <main className="qh-shell" ref={shell}>
+      <a className="qh-skip" href="#hero-title">Saltar al contenido</a>
+      <header className="qh-header">
+        <Brand />
+        <nav className="qh-nav" aria-label="Navegación principal"><NavigationLinks /></nav>
+        <div className="qh-actions">
+          <button className="qh-theme" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}>
+            {theme === 'dark' ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
+          </button>
+          <a className="qh-header-cta" href="#contacto">Contactar <ArrowUpRight aria-hidden="true" /></a>
+          <button className="qh-menu" type="button" ref={menuButton} onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen} aria-controls="qh-mobile-nav">
+            {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </button>
+        </div>
+        <nav className="qh-mobile-nav" id="qh-mobile-nav" hidden={!menuOpen} aria-label="Navegación móvil">
+          <NavigationLinks onNavigate={() => setMenuOpen(false)} />
+          <a href="#contacto" onClick={() => setMenuOpen(false)}>Hablemos</a>
+        </nav>
+      </header>
 
-    <section className="qh-hero" aria-labelledby="hero-title"><div className="qh-hero-image"><img src={assets.hero} alt="Composición arquitectónica creada para Quiroz Digital Studio" width="1672" height="941" fetchPriority="high" /></div><div className="qh-hero-overlay" /><div className="qh-hero-content"><p className="qh-kicker">Quiroz Studio · Pamplona, Navarra</p><h1 id="hero-title">Diseño web en Pamplona<br />para negocios con una <em>presencia clara.</em></h1><p>Diseño web, identidad digital y soluciones a medida para negocios que quieren transmitir confianza y ofrecer una mejor experiencia a sus clientes.</p><div className="qh-hero-buttons"><a className="qh-button" href={`${BASE}proyectos/`}>Explorar proyectos <ArrowUpRight aria-hidden="true" /></a><a className="qh-underlink" href={`${BASE}sobre-mi/`}>Conocer el estudio <ArrowUpRight aria-hidden="true" /></a></div></div><div className="qh-hero-footer"><span>WEB · IDENTIDAD · SEO LOCAL</span><span>01 / 05</span><a href="#portfolio" aria-label="Ver portfolio"><ArrowDown aria-hidden="true" /></a></div></section>
+      <section className="qh-hero" aria-labelledby="hero-title">
+        <div className="qh-hero-content">
+          <p className="qh-kicker">Estudio digital · Pamplona <span className="qh-kicker-rule" /></p>
+          <h1 id="hero-title" tabIndex={-1}>
+            <span>Tu negocio merece</span>{' '}
+            <span>una presencia digital</span>{' '}
+            <em>a su altura.</em>
+          </h1>
+          <p>Diseño web y soluciones digitales para negocios que quieren destacar, transmitir confianza y conectar con sus clientes.</p>
+          <div className="qh-hero-buttons">
+            <a className="qh-button" href="#portfolio">Explorar proyectos <ArrowUpRight aria-hidden="true" /></a>
+            <a className="qh-link" href={BASE + 'sobre-mi/'}>Sobre el estudio</a>
+          </div>
+          <ul className="qh-hero-points" aria-label="Enfoque del estudio">
+            <li><Monitor aria-hidden="true" /><span>Diseño web<br /> a medida</span></li>
+            <li><Layers2 aria-hidden="true" /><span>Experiencia<br /> digital cuidada</span></li>
+            <li><ChartNoAxesColumnIncreasing aria-hidden="true" /><span>Resultados<br /> para tu negocio</span></li>
+          </ul>
+        </div>
+        <figure className="qh-hero-art">
+          <HeroMonitor />
+        </figure>
+      </section>
 
-    <section className="qh-statement qh-section"><div className="qh-section-label"><span>01</span><span>La intención</span></div><div className="qh-statement-content qh-reveal"><p className="qh-kicker">Una web debe hacer algo más que verse bien</p><h2>Tu negocio ya tiene una historia. <em>Vamos a hacer que se note.</em></h2><div className="qh-statement-bottom"><p>Trabajo contigo para ordenar lo que quieres comunicar, convertirlo en una experiencia digital propia y dejar una base que puedas entender y mantener.</p><a className="qh-link" href={`${BASE}sobre-mi/`}>Sobre el estudio <ArrowUpRight aria-hidden="true" /></a></div></div></section>
+      <HomePortfolio items={projects} />
 
-    <section id="portfolio" className="qh-portfolio qh-section"><header className="qh-section-heading qh-reveal"><div><p className="qh-kicker">02 / Trabajo seleccionado</p><h2>Proyectos que<br /><em>hablan por sí solos.</em></h2></div><p>Trabajos publicados, proyectos realizados y conceptos claramente identificados. Cada uno nace de una necesidad distinta.</p></header><PortfolioGrid items={featured} /><div className="qh-portfolio-footer"><p>Hay más historias detrás del estudio.</p><a className="qh-link" href={`${BASE}proyectos/`}>Ver todos los proyectos <ArrowUpRight aria-hidden="true" /></a></div></section>
+      <section className="qh-services qh-section" aria-labelledby="qh-services-title">
+        <header className="qh-band-heading">
+          <p className="qh-kicker">Servicios <span className="qh-kicker-rule" /></p>
+          <h2 id="qh-services-title">Soluciones digitales para negocios reales</h2>
+        </header>
+        <ul className="qh-service-list">
+          {services.map(([Icon, title, description, href]) => (
+            <li key={title}>
+              <a href={href}>
+                <Icon aria-hidden="true" />
+                <h3>{title} <ArrowUpRight aria-hidden="true" /></h3>
+                <p>{description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-    <section className="qh-about qh-section"><div className="qh-about-image qh-reveal"><img src={assets.portrait} alt="Bryans Astorga, diseñador web de Quiroz Digital Studio" width="576" height="1280" loading="lazy" decoding="async" /><span>Bryans Astorga<br />Pamplona · Navarra</span></div><div className="qh-about-content qh-reveal"><p className="qh-kicker">03 / Quién está detrás</p><h2>Una persona real detrás de cada <em>decisión.</em></h2><p>Soy Bryans, la persona detrás de Quiroz Studio. Trabajo con negocios que quieren mejorar su presencia digital sin perder su esencia. Me implico en entender cada proyecto para desarrollar soluciones que tengan sentido para sus clientes.</p><ul><li>Dirección creativa personal</li><li>Diseño y desarrollo</li><li>SEO local y rendimiento</li></ul><a className="qh-link" href={`${BASE}sobre-mi/`}>Conocer más sobre mí <ArrowUpRight aria-hidden="true" /></a></div></section>
+      <section className="qh-about qh-section" aria-labelledby="qh-about-title">
+        <figure className="qh-portrait">
+          <img src={BASE + 'bryan-quiroz.jpg'} alt="Bryans Astorga en su estudio" width="576" height="1280" loading="lazy" decoding="async" />
+        </figure>
+        <div className="qh-about-content">
+          <p className="qh-kicker">Sobre mí <span className="qh-kicker-rule" /></p>
+          <h2 id="qh-about-title">Bryans Astorga</h2>
+          <p>Diseñador web y creador digital. Ayudo a negocios de hostelería, comercios y servicios a tener una presencia online profesional, cercana y efectiva.</p>
+          <a className="qh-signature" href={BASE + 'sobre-mi/'} aria-label="Conocer más sobre Bryans Astorga">Bryans Astorga <ArrowUpRight aria-hidden="true" /></a>
+        </div>
+        <FeatureList items={aboutPoints} className="qh-about-points" />
+      </section>
 
-    <section className="qh-services qh-section"><header className="qh-section-heading qh-reveal"><div><p className="qh-kicker">04 / Servicios</p><h2>Lo necesario para<br /><em>hacerlo bien.</em></h2></div><p>Una selección de servicios claros, sin listados interminables ni soluciones que no aportan al negocio.</p></header><div className="qh-service-list">{services.map(([number, title, text, href]) => <a className="qh-service qh-reveal" href={href} key={number}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div><ArrowUpRight aria-hidden="true" /></a>)}</div></section>
+      <section className="qh-process qh-section" aria-labelledby="qh-process-title">
+        <header className="qh-band-heading">
+          <p className="qh-kicker">Nuestro proceso <span className="qh-kicker-rule" /></p>
+          <h2 id="qh-process-title">De tu idea a una web que funciona</h2>
+        </header>
+        <ol className="qh-process-list">
+          {process.map(([title, description], index) => (
+            <li key={title}>
+              <span aria-hidden="true">{index + 1}</span>
+              <h3>{title}</h3><p>{description}</p>
+              {index < process.length - 1 && <ChevronRight aria-hidden="true" />}
+            </li>
+          ))}
+        </ol>
+      </section>
 
-    <section className="qh-process qh-section"><header className="qh-section-heading qh-reveal"><div><p className="qh-kicker">05 / Forma de trabajar</p><h2>Directo, claro<br /><em>y con intención.</em></h2></div><p>Un proceso sencillo, con una misma persona escuchando, pensando y construyendo el proyecto contigo.</p></header><ol className="qh-process-list">{process.map(([number, title, text]) => <li className="qh-process-item qh-reveal" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></section>
+      <div className="qh-closing">
+        <section className="qh-trust qh-section" aria-labelledby="qh-trust-title">
+          <h2 className="qh-kicker" id="qh-trust-title">¿Por qué Quiroz Studio? <span className="qh-kicker-rule" /></h2>
+          <FeatureList items={advantages} className="qh-trust-points" />
+        </section>
 
-    <section id="contacto" className="qh-contact qh-section"><div className="qh-contact-copy qh-reveal"><p className="qh-kicker">06 / Contacto</p><h2>Tu próximo proyecto empieza con <em>una conversación.</em></h2><p>Cuéntame qué tienes en mente y veremos cómo convertirlo en una solución digital que encaje con tu negocio.</p><div className="qh-contact-links"><a href={`${whatsapp}?text=Hola%20Bryans%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto.`} target="_blank" rel="noreferrer"><span>WhatsApp</span><b>Escribir a Bryans <ArrowUpRight aria-hidden="true" /></b></a><a href={`${BASE}zonas/pamplona/`}><span>Zona de trabajo</span><b>Pamplona · Navarra <ArrowUpRight aria-hidden="true" /></b></a><a href="https://github.com/quirozstudio" target="_blank" rel="noreferrer"><span>Trabajo público</span><b>GitHub / Quiroz <ArrowUpRight aria-hidden="true" /></b></a></div></div><ContactForm /></section>
+        <section id="contacto" className="qh-contact qh-section" aria-labelledby="qh-contact-title">
+          <div className="qh-contact-banner">
+            <MessageCircle className="qh-contact-icon" aria-hidden="true" />
+            <div className="qh-contact-copy">
+              <h2 id="qh-contact-title">Hablemos de tu proyecto</h2>
+              <p>Cuéntame tu idea y veamos cómo podemos darle forma.</p>
+            </div>
+            <a className="qh-button" href={contactHref} target="_blank" rel="noreferrer">Contactar ahora <ArrowUpRight aria-hidden="true" /></a>
+          </div>
+          <details className="qh-contact-details">
+            <summary>Preparar un mensaje para Bryans</summary>
+            <ContactForm />
+          </details>
+        </section>
+      </div>
 
-    <footer className="qh-footer"><Brand /><p>Diseño web, identidad digital y soluciones a medida para negocios locales.</p><nav aria-label="Enlaces del pie"><a href={`${BASE}proyectos/`}>Proyectos</a><a href={`${BASE}servicios/`}>Servicios</a><a href={`${BASE}sobre-mi/`}>Sobre mí</a><a href={`${BASE}zonas/pamplona/`}>Pamplona</a></nav><small>© 2026 · Quiroz Studio</small></footer>
-  </main>
+      <footer className="qh-footer">
+        <div className="qh-footer-top">
+          <Brand />
+          <nav aria-label="Enlaces del pie"><NavigationLinks /></nav>
+          <div className="qh-footer-social">
+            <a href={contactHref} target="_blank" rel="noreferrer" aria-label="Quiroz Studio en WhatsApp"><MessageCircle aria-hidden="true" /></a>
+            <a href="https://github.com/quirozstudio" target="_blank" rel="noreferrer" aria-label="Quiroz Studio en GitHub"><CodeXml aria-hidden="true" /></a>
+          </div>
+        </div>
+        <div className="qh-footer-bottom">
+          <small>© 2026 Quiroz Studio. Todos los derechos reservados.</small>
+          <small>Diseño web en Pamplona · Hostelería · Comercios · Servicios</small>
+        </div>
+      </footer>
+    </main>
+  )
 }

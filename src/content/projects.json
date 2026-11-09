@@ -2,56 +2,110 @@
   {
     "id": "maitagarri",
     "name": "Maitagarri",
-    "sector": "Hostelería · Proyecto realizado",
-    "image": "/portfolio/maitagarri.webp",
-    "alt": "Identidad visual del proyecto Maitagarri para hostelería en Pamplona",
+    "group": "client",
+    "sector": "Hostelería · Web y carta QR",
+    "image": "/portfolio/portada-maitagarri.webp",
+    "alt": "Fachada iluminada del Asador Maitagarri en Pamplona",
     "href": "/proyectos/asador-maitagarri/",
     "externalHref": "https://quirozstudio.github.io/maitagarri.sanfermin/",
-    "statement": "Una pieza QR con el carácter de la brasa, el vino y Pamplona."
+    "statement": "Una web para el asador y una carta QR con el carácter de la brasa, el vino y Pamplona.",
+    "actions": [
+      { "label": "Web", "href": "https://melodic-croquembouche-19fdee.netlify.app/" },
+      { "label": "Carta QR", "href": "https://quirozstudio.github.io/maitagarri.sanfermin/" }
+    ]
   },
   {
     "id": "casa-paco",
     "name": "Casa Paco",
-    "sector": "Hostelería · Web y carta digital",
-    "image": "/casa-paco-fachada.webp",
-    "alt": "Fachada del restaurante Casa Paco en Pamplona",
+    "group": "client",
+    "sector": "Hostelería · Web y carta QR",
+    "image": "/portfolio/portada-casa-paco.webp",
+    "alt": "Torrija de brioche de la carta de Casa Paco",
     "href": "https://casapacopamplona.com/",
-    "statement": "Una presencia digital pensada para abrir el apetito y facilitar la visita."
+    "statement": "Una web para conocer el restaurante y una carta QR para consultar el menú desde la mesa.",
+    "actions": [
+      { "label": "Web", "href": "https://casapacopamplona.com/" },
+      { "label": "Carta QR", "href": "https://quirozstudio.github.io/sanfermin-casapaco/" }
+    ]
+  },
+  {
+    "id": "rasel-opinion",
+    "name": "Rasel Opinión",
+    "group": "client",
+    "sector": "Peluquería · Página de reseñas",
+    "image": "/portfolio/portada-rasel.webp",
+    "alt": "Identidad gráfica de la página de opiniones de Rasel",
+    "href": "https://quirozstudio.github.io/rasel.opinion/",
+    "statement": "Una página que facilita a los clientes de Rasel compartir su experiencia."
+  },
+  {
+    "id": "cony-makeup",
+    "name": "Cony Makeup",
+    "group": "client",
+    "sector": "Belleza · Uñas y maquillaje",
+    "image": "/portfolio/portada-cony-makeup.webp",
+    "alt": "Fotografía del portfolio de maquillaje de Constanza González",
+    "href": "https://quirozstudio.github.io/cony-makeup/",
+    "statement": "Un portfolio para presentar trabajos de maquillaje y uñas y facilitar el contacto."
   },
   {
     "id": "karla-castaneda",
     "name": "Karla Castañeda",
-    "sector": "Bienestar · Presencia local",
+    "group": "client",
+    "sector": "Quiromasajista · Web profesional",
     "image": "/portfolio/karla-masaje.webp",
     "alt": "Karla Castañeda realizando un masaje profesional en camilla",
     "href": "https://kcmasajesybelleza.es/",
-    "statement": "Una experiencia serena para un servicio basado en confianza."
+    "statement": "Una web para presentar sus servicios de quiromasaje y facilitar el contacto."
   },
   {
     "id": "north-division",
     "name": "North Division",
-    "sector": "Concepto / demo · Dirección creativa",
+    "group": "client",
+    "sector": "Ingeniería · Web en desarrollo",
     "image": "/portfolio/north.webp",
-    "alt": "Estructura industrial del concepto North Division",
+    "alt": "Estructura industrial de la portada de North Division",
     "href": "https://quirozstudio.github.io/north.division/",
-    "statement": "Una exploración visual de la ingeniería como construcción cinematográfica."
-  },
-  {
-    "id": "menus-qr",
-    "name": "Menús QR",
-    "sector": "Hostelería · Experiencia móvil",
-    "image": "/qr-quiroz-cocina.webp",
-    "alt": "Diseño de menú digital QR para una experiencia gastronómica",
-    "href": "/proyectos/menus-qr/",
-    "statement": "Cartas y accesos QR claros, legibles y adaptados al tono de cada negocio."
+    "statement": "Web en desarrollo para presentar el trabajo de North Division en ingeniería."
   },
   {
     "id": "bodas-otazu",
-    "name": "Bodas Otazu",
-    "sector": "Eventos · Celebraciones",
-    "image": "/portfolio/bodas-otazu-cover.png",
+    "name": "Bodas",
+    "group": "own",
+    "sector": "Proyecto propio · Webs para bodas",
+    "image": "/portfolio/portada-bodas-otazu.webp",
     "alt": "Papelería de boda sobre una mesa de piedra frente a un viñedo",
     "href": "https://quirozstudio.github.io/bodas.otazu/",
     "statement": "Una experiencia digital para presentar una celebración con calma y detalle."
+  },
+  {
+    "id": "nacimientos-quiroz",
+    "name": "Mi primer año",
+    "group": "own",
+    "sector": "Proyecto propio · Álbum digital",
+    "image": "/portfolio/portada-album-digital.webp",
+    "alt": "Portada editorial de un álbum familiar con páginas de papel y fotografías boca abajo",
+    "href": "https://quirozstudio.github.io/nacimientos.quiroz/",
+    "statement": "Un álbum digital propio para guardar y recorrer los recuerdos del primer año."
+  },
+  {
+    "id": "raices",
+    "name": "Raíces",
+    "group": "own",
+    "sector": "Proyecto propio · Escritura privada",
+    "image": "/portfolio/blog.webp",
+    "alt": "Imagen editorial de Raíces, un espacio para guardar recuerdos",
+    "href": "https://github.com/quirozstudio/raices-quiroz",
+    "statement": "Un espacio para escribir, guardar recuerdos y decidir con quién compartirlos."
+  },
+  {
+    "id": "primer-turno",
+    "name": "Primer Turno",
+    "group": "own",
+    "sector": "Proyecto propio · Curso de hostelería",
+    "image": "/portfolio/portada-primer-turno.webp",
+    "alt": "Un camarero de espaldas en la sala de un restaurante",
+    "href": "https://quirozstudio.github.io/camarero-cursoquiroz/",
+    "statement": "Un curso práctico de hostelería para preparar el primer turno como camarero."
   }
 ]

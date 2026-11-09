@@ -97,14 +97,9 @@ const routes = [
     description: 'Selección de proyectos de identidad digital, diseño web y menús QR para hostelería y negocios locales de Pamplona y Navarra.',
     eyebrow: 'Trabajo seleccionado',
     h1: 'Proyectos donde estrategia, identidad y experiencia trabajan juntas.',
-    intro: 'Cada proyecto parte de un negocio y un problema distinto. Aquí reúno trabajos reales y exploraciones de identidad que muestran cómo traduzco una marca a web, móvil y soportes físicos.',
+    intro: 'Una selección de webs y cartas QR para clientes, junto con ideas y productos propios de Quiroz Studio.',
     sections: [
-      ['Casa Paco', 'Diseño web y experiencia digital para un restaurante de Pamplona, con una navegación clara, carta accesible y llamadas a la reserva pensadas para móvil.'],
-      ['Karla Castañeda', 'Identidad digital cálida y serena para un servicio de bienestar local, desarrollada para comunicar cercanía, confianza y cuidado.'],
-      ['Maitagarri San Fermín', 'Dirección visual y pieza QR para un asador de Pamplona, con una estética vinculada a la brasa, el vino y la identidad local.', '/proyectos/asador-maitagarri/'],
-      ['North Division · CONCEPT / DEMO', 'Concepto visual de carácter industrial que explora una presentación cinematográfica de la ingeniería y la construcción.'],
-      ['Nacimientos Quiroz', 'Experiencia visual personalizada para conservar recuerdos familiares mediante una pieza digital delicada, clara y accesible.'],
-      ['Raíces', 'Espacio privado de memoria y escritura concebido para guardar historias personales y compartirlas únicamente con quien decida su propietario.'],
+      ['Diseños de cartas QR', 'Ejemplos de cartas digitales y soportes QR para hostelería.', '/proyectos/menus-qr/'],
     ],
     faq: [],
   },
@@ -258,11 +253,18 @@ function renderSections(page) {
 
 function renderPortfolio(page) {
   if (page.path !== '/proyectos/') return ''
-  return `<section class="project-portfolio" aria-labelledby="project-portfolio-title"><p class="kicker">Portfolio completo</p><h2 id="project-portfolio-title">Trabajos publicados, realizados y explorados.</h2><div class="project-grid">${projects.map((project) => {
+  const renderTile = (project) => {
     const external = project.href.startsWith('http')
     const href = project.href.startsWith('/') ? link(project.href) : project.href
-    return `<article class="project-tile"><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ''}><div class="project-tile-image"><img src="${asset(project.image)}" alt="${project.alt}" loading="lazy" decoding="async"><span aria-hidden="true">↗</span></div><div class="project-tile-meta"><span>${project.sector}</span><small>${project.id === 'north-division' ? 'Concepto / demo' : 'Portfolio'}</small></div><h3>${project.name}</h3><p>${project.statement}</p></a></article>`
-  }).join('')}</div></section>`
+    const actions = project.actions?.map(({ label, href }) =>
+      `<a href="${href}" target="_blank" rel="noreferrer" aria-label="${label} de ${project.name}">${label} <span aria-hidden="true">↗</span></a>`
+    ).join('')
+    return `<article class="project-tile"><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ''}><div class="project-tile-image"><img src="${asset(project.image)}" alt="${project.alt}" loading="lazy" decoding="async"><span aria-hidden="true">↗</span></div><div class="project-tile-meta">${project.sector}</div><h4>${project.name}</h4><p>${project.statement}</p></a>${actions ? `<div class="project-tile-actions">${actions}</div>` : ''}</article>`
+  }
+  const groups = [['client', 'Trabajos para clientes'], ['own', 'Proyectos propios']]
+  return `<section class="project-portfolio" aria-labelledby="project-portfolio-title"><p class="kicker">Portfolio completo</p><h2 id="project-portfolio-title">Proyectos con carácter</h2>${groups.map(([group, title]) =>
+    `<section class="project-group" aria-labelledby="project-group-${group}"><h3 id="project-group-${group}">${title}</h3><div class="project-grid">${projects.filter(project => project.group === group).map(renderTile).join('')}</div></section>`
+  ).join('')}</section>`
 }
 
 function renderFaq(page) {
