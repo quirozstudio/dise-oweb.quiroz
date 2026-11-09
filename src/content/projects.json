@@ -1,5 +1,15 @@
 [
   {
+    "id": "north-division",
+    "name": "North Division",
+    "group": "client",
+    "sector": "Ingeniería · Web en desarrollo",
+    "image": "/portfolio/north.webp",
+    "alt": "Estructura industrial de la portada de North Division",
+    "href": "https://quirozstudio.github.io/north.division/",
+    "statement": "Web en desarrollo para presentar el trabajo de North Division en ingeniería."
+  },
+  {
     "id": "maitagarri",
     "name": "Maitagarri",
     "group": "client",
@@ -29,6 +39,16 @@
     ]
   },
   {
+    "id": "karla-castaneda",
+    "name": "Karla Castañeda",
+    "group": "client",
+    "sector": "Quiromasajista · Web profesional",
+    "image": "/portfolio/karla-masaje.webp",
+    "alt": "Karla Castañeda realizando un masaje profesional en camilla",
+    "href": "https://kcmasajesybelleza.es/",
+    "statement": "Una web para presentar sus servicios de quiromasaje y facilitar el contacto."
+  },
+  {
     "id": "rasel-opinion",
     "name": "Rasel Opinión",
     "group": "client",
@@ -47,26 +67,6 @@
     "alt": "Fotografía del portfolio de maquillaje de Constanza González",
     "href": "https://quirozstudio.github.io/cony-makeup/",
     "statement": "Un portfolio para presentar trabajos de maquillaje y uñas y facilitar el contacto."
-  },
-  {
-    "id": "karla-castaneda",
-    "name": "Karla Castañeda",
-    "group": "client",
-    "sector": "Quiromasajista · Web profesional",
-    "image": "/portfolio/karla-masaje.webp",
-    "alt": "Karla Castañeda realizando un masaje profesional en camilla",
-    "href": "https://kcmasajesybelleza.es/",
-    "statement": "Una web para presentar sus servicios de quiromasaje y facilitar el contacto."
-  },
-  {
-    "id": "north-division",
-    "name": "North Division",
-    "group": "client",
-    "sector": "Ingeniería · Web en desarrollo",
-    "image": "/portfolio/north.webp",
-    "alt": "Estructura industrial de la portada de North Division",
-    "href": "https://quirozstudio.github.io/north.division/",
-    "statement": "Web en desarrollo para presentar el trabajo de North Division en ingeniería."
   },
   {
     "id": "bodas-otazu",
