@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .codex-remote-attachments/
+artifacts/visual-review/
 
 # Editor directories and files
 .vscode/*

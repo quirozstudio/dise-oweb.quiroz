@@ -15,7 +15,7 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
       <img src={`${import.meta.env.BASE_URL}${project.image.slice(1)}`} alt={project.alt} loading={featured ? 'eager' : 'lazy'} decoding="async" />
       <span className="qh-project-arrow" aria-hidden="true"><ArrowUpRight /></span>
     </a>
-    <div className="qh-project-info"><div><span>{project.sector}</span><small>{project.id === 'north-division' ? 'Concepto' : 'Portfolio'}</small></div><h3><a href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{project.name}</a></h3><p>{project.statement}</p><a className="qh-link" href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>Ver proyecto <ArrowUpRight aria-hidden="true" /></a></div>
+    <div className="qh-project-info"><div><span>{project.sector}</span></div><h3><a href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{project.name}</a></h3><p>{project.statement}</p><a className="qh-link" href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>Ver proyecto <ArrowUpRight aria-hidden="true" /></a></div>
   </article>
 }
 
