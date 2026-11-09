@@ -1,16 +1,18 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import {
   ArrowUpRight, Award, CalendarDays, ChartNoAxesColumnIncreasing, ChevronRight,
   CodeXml, Heart, Laptop, Layers2, MapPin, Menu, MessageCircle, Monitor, Moon,
-  QrCode, Sun, Target, UsersRound, X, Zap,
+  Play, QrCode, Sun, Target, UsersRound, X, Zap,
 } from 'lucide-react'
 import projects from '@/content/projects.json'
 import { HomePortfolio } from './quiroz-home-portfolio'
 import { HeroMonitor } from './quiroz-hero-monitor'
+import { QuirozIntro } from './quiroz-intro'
 import './quiroz-home.css'
 
 const BASE = import.meta.env.BASE_URL
+const introSessionKey = 'quiroz-intro-v2-seen'
 const whatsapp = 'https://wa.me/34618905239'
 const contactHref = whatsapp + '?text=' + encodeURIComponent('Hola Bryans, me gustaría hablar sobre un proyecto.')
 const links = [
@@ -98,13 +100,26 @@ function ContactForm() {
   )
 }
 
+function shouldPlayIntro() {
+  if (window.location.pathname !== BASE || window.location.hash) return false
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
+  try { return sessionStorage.getItem(introSessionKey) !== 'true' } catch { return false }
+}
+
 export function QuirozHome() {
   const shell = useRef<HTMLElement>(null)
   const menuButton = useRef<HTMLButtonElement>(null)
+  const [intro, setIntro] = useState<'arrival' | 'replay' | null>(() => shouldPlayIntro() ? 'arrival' : null)
+  const finishIntro = useCallback(() => setIntro(null), [])
   const [menuOpen, setMenuOpen] = useState(false)
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     try { return localStorage.getItem('quiroz-theme') === 'light' ? 'light' : 'dark' } catch { return 'dark' }
   })
+
+  useEffect(() => {
+    if (!intro) return
+    try { sessionStorage.setItem(introSessionKey, 'true') } catch { /* Storage can be disabled. */ }
+  }, [intro])
 
   useEffect(() => {
     document.title = 'Diseño web en Pamplona para negocios locales | Quiroz'
@@ -186,7 +201,7 @@ export function QuirozHome() {
           </ul>
         </div>
         <figure className="qh-hero-art">
-          <HeroMonitor />
+          <HeroMonitor defer={intro === 'arrival'} />
         </figure>
       </section>
 
@@ -266,6 +281,9 @@ export function QuirozHome() {
           <Brand />
           <nav aria-label="Enlaces del pie"><NavigationLinks /></nav>
           <div className="qh-footer-social">
+            <button className="qh-footer-intro" type="button" onClick={() => setIntro('replay')}>
+              <Play aria-hidden="true" /> Ver intro
+            </button>
             <a href={contactHref} target="_blank" rel="noreferrer" aria-label="Quiroz Studio en WhatsApp"><MessageCircle aria-hidden="true" /></a>
             <a href="https://github.com/quirozstudio" target="_blank" rel="noreferrer" aria-label="Quiroz Studio en GitHub"><CodeXml aria-hidden="true" /></a>
           </div>
@@ -275,6 +293,7 @@ export function QuirozHome() {
           <small>Diseño web en Pamplona · Hostelería · Comercios · Servicios</small>
         </div>
       </footer>
+      {intro && <QuirozIntro onFinish={finishIntro} />}
     </main>
   )
 }
