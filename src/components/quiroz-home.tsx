@@ -12,7 +12,6 @@ import { QuirozIntro } from './quiroz-intro'
 import './quiroz-home.css'
 
 const BASE = import.meta.env.BASE_URL
-const introSessionKey = 'quiroz-intro-v2-seen'
 const whatsapp = 'https://wa.me/34618905239'
 const contactHref = whatsapp + '?text=' + encodeURIComponent('Hola Bryans, me gustaría hablar sobre un proyecto.')
 const links = [
@@ -101,9 +100,9 @@ function ContactForm() {
 }
 
 function shouldPlayIntro() {
-  if (window.location.pathname !== BASE || window.location.hash) return false
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
-  try { return sessionStorage.getItem(introSessionKey) !== 'true' } catch { return false }
+  return document.documentElement.hasAttribute('data-quiroz-intro-pending')
+    && !window.location.hash
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
 export function QuirozHome() {
@@ -116,9 +115,12 @@ export function QuirozHome() {
     try { return localStorage.getItem('quiroz-theme') === 'light' ? 'light' : 'dark' } catch { return 'dark' }
   })
 
-  useEffect(() => {
-    if (!intro) return
-    try { sessionStorage.setItem(introSessionKey, 'true') } catch { /* Storage can be disabled. */ }
+  useLayoutEffect(() => {
+    const root = document.documentElement
+    const sessionKey = root.dataset.quirozIntroKey
+    delete root.dataset.quirozIntroPending
+    if (!intro || !sessionKey) return
+    try { sessionStorage.setItem(sessionKey, 'true') } catch { /* Storage can be disabled. */ }
   }, [intro])
 
   useEffect(() => {
