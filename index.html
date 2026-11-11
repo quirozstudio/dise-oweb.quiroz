@@ -1,11 +1,23 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-quiroz-intro-key="quiroz-intro-v2-seen">
   <head>
     <meta charset="UTF-8" />
-    <script>if(location.pathname.replace(/\/$/, "") === "/demo-portada-3d") document.documentElement.dataset.quirozDemo = "true";</script>
+    <script>
+      (() => {
+        const root = document.documentElement
+        if (location.pathname.replace(/\/$/, '') === '/demo-portada-3d') root.dataset.quirozDemo = 'true'
+        if (location.pathname !== '%BASE_URL%' || location.hash) return
+        if (!window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+        if (!window.HTMLDialogElement?.prototype.showModal) return
+        try {
+          if (sessionStorage.getItem(root.dataset.quirozIntroKey) === 'true') return
+          root.dataset.quirozIntroPending = ''
+          setTimeout(() => { delete root.dataset.quirozIntroPending }, 3000)
+        } catch { /* Show the page directly when storage is unavailable. */ }
+      })()
+    </script>
     <link rel="icon" type="image/svg+xml" href="./favicon-quiroz.svg" />
     <link rel="manifest" href="./site.webmanifest" />
-    <link rel="preload" as="image" href="%BASE_URL%quiroz-hero-architecture.webp" fetchpriority="high" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Diseño web para restaurantes y negocios locales de Pamplona. Webs a medida, menús digitales QR y SEO local con una identidad cuidada." />
     <meta name="author" content="Bryans Astorga" />
@@ -28,6 +40,13 @@
     <meta name="twitter:image" content="https://quirozstudio.es/og-quiroz.webp" />
     <style>
       html[data-quiroz-demo],html[data-quiroz-demo] body{background:#11100e;color:#f0e7d9}
+      .intro-boot{display:none}
+      html[data-quiroz-intro-pending] body{background:#0e0d0c;margin:0}
+      html[data-quiroz-intro-pending] .seo-fallback{visibility:hidden}
+      html[data-quiroz-intro-pending] .intro-boot{position:fixed;inset:0;z-index:100;display:grid;place-content:center;gap:16px;text-align:center;background:radial-gradient(ellipse at 70% 17%,#291e17,transparent 43%),#0e0d0c;color:#f7efe6;font-family:Arial,sans-serif;padding:18px}
+      .intro-boot p{margin:0;color:#eac79d;font:650 clamp(10px,1vw,14px)/1.4 Arial,sans-serif;letter-spacing:.25em}
+      .intro-boot strong{font:600 clamp(29px,9.1vw,125px)/.92 Arial,sans-serif;letter-spacing:-.063em}
+      .intro-boot strong span{color:#e2b784}
       .seo-fallback{min-height:100vh;padding:12vh 8vw;background:#0d0907;color:#f4ecdf;font-family:Arial,sans-serif}.seo-fallback h1{max-width:900px;font:400 clamp(48px,7vw,100px)/.95 Georgia,serif}.seo-fallback p{max-width:680px;color:#c5b8a8;font-size:18px;line-height:1.65}.seo-fallback nav{display:flex;flex-wrap:wrap;gap:20px;margin-top:32px}.seo-fallback a{color:#d0a663}
     </style>
     <title>Diseño web en Pamplona para negocios locales | Quiroz</title>
@@ -58,6 +77,10 @@
     </script>
   </head>
   <body>
+    <div class="intro-boot" aria-hidden="true">
+      <p>ESTUDIO DIGITAL · PAMPLONA</p>
+      <strong>QUIROZ <span>STUDIO.</span></strong>
+    </div>
     <div id="root">
       <main class="seo-fallback">
         <p>Quiroz Digital Studio · Pamplona</p>
