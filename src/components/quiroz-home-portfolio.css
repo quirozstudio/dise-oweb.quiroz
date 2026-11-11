@@ -90,6 +90,18 @@
   color: #fbf2e5;
 }
 
+.qhp .qhp-card-description {
+  grid-template-rows: auto;
+  align-content: center;
+  gap: 12px;
+  padding: clamp(24px, 3vw, 44px);
+  background: radial-gradient(ellipse at 85% 15%, #362a21, #1a1714 75%);
+}
+
+.qhp-card-description small { color: #ddc19d; font-size: 12px; }
+.qhp-card-description h4 { margin: 0; font: 400 clamp(25px, 2.4vw, 39px)/1.05 Georgia, serif; }
+.qhp-card-description p { max-width: 32ch; margin: 0; color: #eaded0; font-size: 14px; line-height: 1.55; }
+
 .qhp-card-main { display: grid; grid-template-rows: auto 1fr; }
 .qhp .qhp-card-main:focus-visible { outline-offset: -3px; }
 .qhp-card-media { position: relative; display: block; overflow: hidden; aspect-ratio: 1.52; background: #282119; }

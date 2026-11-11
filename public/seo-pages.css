@@ -114,3 +114,13 @@ footer > p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; 
 .project-group > h3 { margin: 0 0 26px; font: 400 clamp(24px, 3vw, 46px)/1 Georgia, serif; }
 .project-tile-actions { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; }
 .project-tile-actions a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--gold); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+
+.project-tile-description {
+  display: grid;
+  align-content: center;
+  padding: clamp(24px, 5vw, 72px);
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.project-tile-description .project-tile-meta { margin-top: 0; }

@@ -7,6 +7,19 @@ const base = import.meta.env.BASE_URL
 
 function ProjectCard({ project }: { project: Project }) {
   const [failed, setFailed] = useState(false)
+
+  if (!project.href) {
+    return (
+      <li className="qhp-slide">
+        <article className="qhp-card qhp-card-description">
+          <small>{project.sector}</small>
+          <h4>{project.name}</h4>
+          <p>{project.statement}</p>
+        </article>
+      </li>
+    )
+  }
+
   const external = /^https?:\/\//.test(project.href)
   const href = project.href.startsWith('/') ? base + project.href.slice(1) : project.href
 
@@ -15,7 +28,7 @@ function ProjectCard({ project }: { project: Project }) {
       <article className="qhp-card">
         <a className="qhp-card-main" href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>
           <span className="qhp-card-media">
-            {failed ? (
+            {failed || !project.image ? (
               <span className="qhp-card-placeholder" aria-hidden="true"><PanelsTopLeft /></span>
             ) : (
               <img src={base + project.image.slice(1)} alt="" loading="lazy" decoding="async" onError={() => setFailed(true)} />

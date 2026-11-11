@@ -69,6 +69,13 @@
     "statement": "Un portfolio para presentar trabajos de maquillaje y uñas y facilitar el contacto."
   },
   {
+    "id": "encargos-club-tenis",
+    "name": "Encargos para el club de tenis",
+    "group": "client",
+    "sector": "Herramienta interna",
+    "statement": "Una herramienta para registrar pedidos y consultarlos por fecha y hora desde el móvil, la barra o la cocina."
+  },
+  {
     "id": "bodas-otazu",
     "name": "Bodas",
     "group": "own",
@@ -107,5 +114,35 @@
     "alt": "Un camarero de espaldas en la sala de un restaurante",
     "href": "https://quirozstudio.github.io/camarero-cursoquiroz/",
     "statement": "Un curso práctico de hostelería para preparar el primer turno como camarero."
+  },
+  {
+    "id": "experience-quiroz",
+    "name": "Experience Quiroz",
+    "group": "own",
+    "sector": "Proyecto propio · Experiencias interactivas",
+    "image": "/portfolio/portada-experience-quiroz.webp",
+    "alt": "Portal circular dorado en un espacio arquitectónico oscuro",
+    "href": "https://quirozstudio.github.io/experience-quiroz/",
+    "statement": "Una colección de regalos digitales personalizados para celebrar y conservar momentos especiales."
+  },
+  {
+    "id": "cumple-infantil",
+    "name": "Cumpleaños infantil",
+    "group": "own",
+    "sector": "Proyecto propio · Álbum de cumpleaños",
+    "image": "/portfolio/portada-cumple-infantil.webp",
+    "alt": "Mesa de cumpleaños infantil con tarta, globos y regalos",
+    "href": "https://quirozstudio.github.io/cumple.infantil.quiroz/",
+    "statement": "Un álbum de cumpleaños con fotos, mensajes y una cápsula del tiempo para volver a ese día."
+  },
+  {
+    "id": "parejas-quiroz",
+    "name": "Parejas",
+    "group": "own",
+    "sector": "Proyecto propio · Regalo de aniversario",
+    "image": "/portfolio/portada-parejas.webp",
+    "alt": "Sobre burdeos con sello de lacre en la portada de Parejas",
+    "href": "https://parejas-quiroz.vercel.app/",
+    "statement": "Un regalo digital de aniversario con una carta y recuerdos de pareja que se descubren por capítulos."
   }
 ]
