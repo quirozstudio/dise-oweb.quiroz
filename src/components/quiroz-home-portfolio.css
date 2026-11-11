@@ -113,14 +113,14 @@
 
 .qhp .qhp-card-description {
   grid-template-rows: auto;
-  align-content: center;
-  gap: 12px;
-  padding: clamp(24px, 3vw, 44px);
-  background: radial-gradient(ellipse at 85% 15%, #362a21, #1a1714 75%);
+  grid-template-rows: auto 1fr;
+  background: #17130f;
 }
 
+.qhp .qhp-card .qhp-card-description-image { position: static; inset: auto; display: block; width: 100%; aspect-ratio: 1.52; object-fit: cover; }
+.qhp-card-description-copy { display: grid; align-content: center; gap: 9px; padding: 15px clamp(12px, 1.45vw, 24px); }
 .qhp-card-description small { color: #ddc19d; font-size: 12px; }
-.qhp-card-description h4 { margin: 0; font: 400 clamp(25px, 2.4vw, 39px)/1.05 Georgia, serif; }
+.qhp-card-description h4 { margin: 0; font: 400 clamp(21px, 1.9vw, 30px)/1.05 Georgia, serif; }
 .qhp-card-description p { max-width: 32ch; margin: 0; color: #eaded0; font-size: 14px; line-height: 1.55; }
 
 .qhp-card-main { display: grid; grid-template-rows: auto 1fr; }

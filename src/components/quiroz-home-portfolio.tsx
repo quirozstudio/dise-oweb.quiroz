@@ -12,9 +12,12 @@ function ProjectCard({ project }: { project: Project }) {
     return (
       <li className="qhp-slide">
         <article className="qhp-card qhp-card-description">
-          <small>{project.sector}</small>
-          <h4>{project.name}</h4>
-          <p>{project.statement}</p>
+          {project.image && <img className="qhp-card-description-image" src={base + project.image.slice(1)} alt={project.alt} loading="lazy" decoding="async" />}
+          <div className="qhp-card-description-copy">
+            <small>{project.sector}</small>
+            <h4>{project.name}</h4>
+            <p>{project.statement}</p>
+          </div>
         </article>
       </li>
     )

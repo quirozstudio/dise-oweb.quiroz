@@ -73,6 +73,8 @@
     "name": "Encargos para el club de tenis",
     "group": "client",
     "sector": "Herramienta interna",
+    "image": "/portfolio/portada-encargos-tenis.webp",
+    "alt": "Pelota de tenis de bronce junto a una terminal para organizar pedidos del club",
     "statement": "Una herramienta para registrar pedidos y consultarlos por fecha y hora desde el móvil, la barra o la cocina."
   },
   {

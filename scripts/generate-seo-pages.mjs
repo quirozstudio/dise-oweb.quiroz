@@ -272,7 +272,10 @@ function renderPortfolio(page) {
   if (page.path !== '/proyectos/') return ''
   const renderTile = (project) => {
     const details = `<div class="project-tile-meta">${project.sector}</div><h4>${project.name}</h4><p>${project.statement}</p>`
-    if (!project.href) return `<article class="project-tile project-tile-description">${details}</article>`
+    if (!project.href) {
+      const image = project.image ? `<div class="project-tile-image"><img src="${asset(project.image)}" alt="${project.alt}" loading="lazy" decoding="async"></div>` : ''
+      return `<article class="project-tile project-tile-description">${image}${details}</article>`
+    }
 
     const external = project.href.startsWith('http')
     const href = project.href.startsWith('/') ? link(project.href) : project.href
