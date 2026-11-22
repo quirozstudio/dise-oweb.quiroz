@@ -146,10 +146,10 @@ export function QuirozHome() {
         <div className="qh-hero-content">
           <p className="qh-kicker">Estudio digital · Pamplona <span className="qh-kicker-rule" /></p>
           <h1 id="hero-title" tabIndex={-1}>
-            <span>Diseño webs para restaurantes y negocios locales</span>{' '}
-            <em>en Pamplona.</em>
+            <span>Hay ideas que merecen</span>{' '}
+            <em>algo más que una plantilla.</em>
           </h1>
-          <p>Soy Bryans Astorga. Creo webs donde tus clientes pueden consultar la carta, reservar mesa o contactar contigo desde el móvil.</p>
+          <p>Escucho, interpreto y doy forma a lo que hace diferente a cada negocio. Diseño y desarrollo webs desde cero, con identidad propia, funciones a medida y una estrategia para que también puedan encontrarlas.</p>
           <div className="qh-hero-buttons">
             <a className="qh-button" href="#portfolio">Ver proyectos <ArrowUpRight aria-hidden="true" /></a>
             <a className="qh-link" href={BASE + 'sobre-mi/'}>Sobre mí</a>
