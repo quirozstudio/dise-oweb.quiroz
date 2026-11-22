@@ -43,19 +43,17 @@ function ProjectCard({ project }: { project: Project }) {
             <span className="qhp-card-arrow" aria-hidden="true"><ArrowUpRight /></span>
           </span>
         </a>
+        {project.statement && <p className="qhp-case-summary">{project.statement}</p>}
         {project.actions && (
-          <>
-            <p className="qhp-case-summary">{project.statement}</p>
-            <ul className="qhp-card-actions" aria-label={'Enlaces de ' + project.name}>
-              {project.actions.map(action => (
-                <li key={action.label}>
-                  <a href={action.href} target="_blank" rel="noreferrer" aria-label={action.label + ' de ' + project.name}>
-                    {action.label} <ArrowUpRight aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </>
+          <ul className="qhp-card-actions" aria-label={'Enlaces de ' + project.name}>
+            {project.actions.map(action => (
+              <li key={action.label}>
+                <a href={action.href} target="_blank" rel="noreferrer" aria-label={action.label + ' de ' + project.name}>
+                  {action.label} <ArrowUpRight aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
         )}
       </article>
     </li>
