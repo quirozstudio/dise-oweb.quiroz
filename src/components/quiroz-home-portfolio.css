@@ -207,3 +207,11 @@
   .qhp-card img { transition: none; }
   .qhp-card:hover img { transform: none; }
 }
+
+.qhp-case-summary {
+  margin: 0;
+  padding: 0 16px 12px;
+  color: #e0d4c6;
+  font-size: 14px;
+  line-height: 1.5;
+}

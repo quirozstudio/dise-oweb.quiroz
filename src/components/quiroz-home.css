@@ -354,3 +354,15 @@
 @media (prefers-reduced-motion: reduce) {
   .qh-motion-ready .qh-reveal, .qh-motion-ready .qh-reveal:not(.is-visible):not(:focus-within) { opacity: 1; transform: none; transition: none; }
 }
+.qh-shell .qh-featured-project { width: 100%; min-width: 0; margin: 0; padding-block: 20px; }
+.qh-featured-project a { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #191512; }
+.qh-featured-project img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.qh-featured-project span { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; color: var(--gold); font-size: 14px; }
+.qh-featured-project svg { width: 16px; height: 16px; }
+.qh-hero h1 > span { display: inline; }
+.qh-service-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.qh-about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+@media(max-width: 650px) {
+  .qh-service-list, .qh-about { grid-template-columns: minmax(0, 1fr); }
+  .qh-featured-project img { aspect-ratio: 2 / 1; }
+}

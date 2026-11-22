@@ -15,8 +15,8 @@ const routes = [
     title: 'Servicios de diseño web en Pamplona | Quiroz',
     description: 'Diseño y desarrollo web, menús digitales QR y SEO local para restaurantes y negocios de Pamplona y Navarra que quieren crecer online.',
     eyebrow: 'Servicios digitales a medida',
-    h1: 'Diseño web que convierte la esencia de tu negocio en una presencia digital clara.',
-    intro: 'Trabajo directamente contigo para ordenar tu propuesta, diseñar una identidad digital coherente y construir una web rápida que ayude al cliente a entender por qué elegirte.',
+    h1: 'Diseño web, cartas QR y visibilidad en Google.',
+    intro: 'Puedo crear tu web, conectar el sistema de reservas que ya usas o preparar una carta para consultar desde el móvil.',
     sections: [
       ['Diseño web para hostelería', 'Webs a medida para restaurantes, bares y cafeterías. La experiencia, la carta, las reservas y la ubicación se organizan pensando primero en el móvil y en la decisión real del cliente.', '/servicios/diseno-web-restaurantes/'],
       ['Menús digitales QR', 'Cartas digitales legibles, visuales y fáciles de consultar, sin obligar al cliente a descargar una aplicación ni ampliar un PDF incómodo.', '/servicios/menus-digitales-qr/'],
@@ -35,12 +35,13 @@ const routes = [
     title: 'Diseño web para restaurantes en Pamplona | Quiroz',
     description: 'Webs a medida para restaurantes, bares y cafeterías de Pamplona: diseño premium, carta digital, reservas, velocidad y SEO local.',
     eyebrow: 'Diseño web · Hostelería',
-    h1: 'Diseño web para restaurantes que quieren transmitir su verdadero nivel.',
+    h1: 'Webs para restaurantes con carta, ubicación y reservas.',
     intro: 'Tu web debe hacer sentir el ambiente del local, facilitar la consulta de la carta y convertir una búsqueda desde el móvil en una visita, una llamada o una reserva.',
     sections: [
       ['Una experiencia que empieza antes de entrar', 'La mayoría de clientes comprueba la carta, las fotografías, la ubicación o la posibilidad de reservar antes de decidir. Diseño ese recorrido para que la información importante aparezca con naturalidad y la identidad del restaurante no se pierda en una plantilla genérica.'],
       ['Qué puede incluir el proyecto', 'Arquitectura de contenidos, dirección visual, desarrollo responsive, carta o menú digital, integración de reservas existentes, mapa, idiomas, optimización de imágenes, analítica preparada y una base técnica para SEO local. Solo se incorporan las funciones que aportan valor real.'],
-      ['Proceso directo con Bryans', 'Primero entiendo el concepto, el público y la experiencia del local. Después defino una dirección visual, diseño las pantallas principales, desarrollo la web y reviso rendimiento, accesibilidad y uso móvil antes del lanzamiento.'],
+      ['Ejemplo: Casa Paco', 'Diseñé su web y una carta digital que los clientes pueden abrir desde la mesa.', '/proyectos/#casa-paco', 'Ver el trabajo para Casa Paco'],
+      ['Proceso directo con Bryans', 'Primero hablamos del local y de cómo recibe reservas. Después te enseño el diseño y probamos juntos las acciones principales desde el móvil.'],
       ['Pamplona y Navarra', 'Trabajo especialmente con restaurantes, bares y cafeterías de Pamplona y Navarra. El conocimiento del entorno local ayuda a construir mensajes y recorridos más cercanos al cliente que busca dónde comer, reservar o descubrir un nuevo local.'],
     ],
     faq: [
@@ -56,11 +57,11 @@ const routes = [
     title: 'Menús digitales QR para restaurantes en Navarra | Quiroz',
     description: 'Diseño de cartas y menús digitales QR para restaurantes y bares de Navarra: claros, rápidos, multilingües y adaptados a cada marca.',
     eyebrow: 'Cartas digitales · Experiencia móvil',
-    h1: 'Menús digitales QR que forman parte del restaurante, no un código pegado en la mesa.',
+    h1: 'Cartas QR para consultar desde la mesa.',
     intro: 'Diseño la pieza física y la experiencia digital para que el cliente consulte la carta con rapidez, entienda la oferta y reconozca la identidad del local.',
     sections: [
       ['Lectura cómoda desde cualquier móvil', 'La carta se estructura para evitar PDFs pesados, textos diminutos y ampliaciones constantes. Categorías, platos, precios, alérgenos e idiomas se ordenan para una consulta rápida durante el servicio.'],
-      ['Diseño coherente con el local', 'El soporte QR, los colores, la tipografía y el entorno digital siguen la identidad del restaurante. El resultado puede ser sobrio, tradicional, gastronómico o contemporáneo, pero nunca genérico.'],
+      ['Prueba una carta desde el móvil', 'En Casa Paco preparé una carta de San Fermín en español, inglés y francés.', '/proyectos/menus-qr/', 'Ver y abrir la carta de Casa Paco'],
       ['Preparado para clientes internacionales', 'Cuando el negocio lo necesita, la información puede organizarse en varios idiomas para reducir dudas, agilizar el servicio y ofrecer una experiencia más cómoda al visitante.'],
       ['Aplicaciones más allá de la carta', 'El mismo enfoque puede utilizarse para cartas de temporada, promociones, información de eventos o experiencias privadas. Cada QR debe tener un objetivo claro y una página útil detrás.'],
     ],
@@ -77,12 +78,12 @@ const routes = [
     title: 'SEO local para negocios en Pamplona | Quiroz',
     description: 'SEO local para negocios de Pamplona y Navarra: arquitectura web, contenidos, rendimiento y señales técnicas para ganar visibilidad cualificada.',
     eyebrow: 'Visibilidad local · Estrategia',
-    h1: 'SEO local para que tu negocio sea entendido, encontrado y elegido.',
-    intro: 'El posicionamiento local empieza por una web clara: servicios diferenciados, información consistente, páginas rápidas y contenido que responda a búsquedas reales de clientes de la zona.',
+    h1: 'SEO local para negocios de Pamplona.',
+    intro: 'Reviso si Google encuentra las páginas importantes y si tus clientes pueden localizar la carta, los horarios y el contacto.',
     sections: [
       ['Una arquitectura que evita competir contigo mismo', 'Cada servicio y cada zona relevante necesita una intención clara. Organizo URLs, títulos, contenidos y enlazado interno para que varias páginas no intenten posicionar por exactamente la misma búsqueda.'],
       ['Base técnica y rendimiento', 'Reviso indexación, sitemap, datos estructurados, canonicals, imágenes, experiencia móvil y Core Web Vitals. El objetivo es facilitar el rastreo sin sacrificar la experiencia visual de la marca.'],
-      ['Contenido local útil', 'Pamplona o Navarra no se repiten de forma artificial. Las señales locales se incorporan donde aportan contexto: área de servicio, proyectos, preguntas, necesidades del público y forma de trabajar.'],
+      ['Ejemplo: Asador Maitagarri', 'Revisé cómo aparecían las páginas del asador en Google y redirigí direcciones antiguas hacia la carta, las celebraciones y otras páginas actuales.', '/proyectos/#maitagarri', 'Ver el trabajo para Maitagarri'],
       ['Medición y evolución', 'La arquitectura queda preparada para Search Console y analítica. Los datos permiten priorizar nuevas páginas, mejorar consultas con impresiones y detectar oportunidades reales en lugar de publicar contenido sin dirección.'],
     ],
     faq: [
@@ -97,7 +98,7 @@ const routes = [
     title: 'Proyectos de diseño web y menús QR | Quiroz',
     description: 'Selección de proyectos de identidad digital, diseño web y menús QR para hostelería y negocios locales de Pamplona y Navarra.',
     eyebrow: 'Trabajo seleccionado',
-    h1: 'Proyectos donde estrategia, identidad y experiencia trabajan juntas.',
+    h1: 'Webs y cartas QR para negocios locales.',
     intro: 'Una selección de webs y cartas QR para clientes, junto con ideas y productos propios de Quiroz Studio.',
     sections: [
       ['Diseños de cartas QR', 'Ejemplos de cartas digitales y soportes QR para hostelería.', '/proyectos/menus-qr/'],
@@ -128,12 +129,12 @@ const routes = [
     title: 'Proyectos de menús y experiencias QR | Quiroz',
     description: 'Diseños QR para restaurantes, cartas multilingües y experiencias personalizadas creadas por Quiroz Digital Studio.',
     eyebrow: 'Proyecto · Diseño QR',
-    h1: 'Tres contextos, tres experiencias QR diseñadas con intención.',
-    intro: 'Un restaurante tradicional, una propuesta gastronómica premium y un recuerdo familiar no deberían compartir la misma plantilla. Cada pieza necesita su propio tono y una acción clara.',
+    h1: 'Cartas digitales y otros usos del QR.',
+    intro: 'Abre la carta de Casa Paco desde el móvil. Más abajo puedes ver dos ejemplos propios de otros usos del QR.',
     sections: [
-      ['Casa Paco', 'Una composición oscura, cálida y multilingüe que integra el QR en un ambiente de restaurante tradicional. La lectura guía al cliente en español, inglés y francés.'],
-      ['Quiroz Restobar', 'Un concepto sobrio y contemporáneo en negro y oro, con énfasis en la marca y una consulta de carta rápida desde el móvil.'],
-      ['Amy', 'Una aplicación emocional del QR para conservar y consultar recuerdos. Demuestra que la tecnología puede adoptar un lenguaje cálido y personal sin perder claridad.'],
+      ['Casa Paco', 'Diseñé una carta de San Fermín que se podía consultar desde la mesa en español, inglés y francés.', 'https://quirozstudio.github.io/sanfermin-casapaco/', 'Abrir el portal de cartas de Casa Paco'],
+      ['Quiroz Restobar · Concepto propio', 'Una demostración de carta móvil en negro y oro.'],
+      ['Proyecto familiar · Recuerdos', 'Un ejemplo de cómo abrir un recuerdo familiar desde un QR.'],
       ['Diseño adaptado al objetivo', 'Los tres casos comparten contraste, legibilidad y una acción evidente, pero cambian por completo en tono, jerarquía y emoción.', '/servicios/menus-digitales-qr/'],
     ],
     faq: [],
@@ -159,11 +160,11 @@ const routes = [
     title: 'Diseño web para negocios en Pamplona | Quiroz',
     description: 'Diseño web, menús QR y SEO local para restaurantes y negocios de Pamplona que quieren proyectar una imagen profesional y atraer clientes.',
     eyebrow: 'Área de servicio · Pamplona',
-    h1: 'Diseño web para negocios de Pamplona con identidad, claridad y estrategia local.',
-    intro: 'Trabajo con restaurantes y negocios de Pamplona que quieren dejar de parecer uno más en internet. La cercanía permite comprender mejor el local, su público y la experiencia que debe trasladarse a la web.',
+    h1: 'Diseño web para negocios de Pamplona.',
+    intro: 'Trabajo con restaurantes, comercios y profesionales. Podemos reunirnos para ver qué necesitan tus clientes cuando llegan a tu web.',
     sections: [
       ['Para hostelería y negocios locales', 'La web puede integrar carta, reservas existentes, servicios, ubicación, contenidos visuales y llamadas a la acción. La estructura se adapta al recorrido real del cliente que busca desde el móvil.'],
-      ['Visibilidad en Pamplona y Navarra', 'La arquitectura técnica conecta servicios, proyectos y señales locales sin repetir la ciudad de forma artificial. Esto ayuda a Google y al usuario a entender la relación real del negocio con su zona.'],
+      ['Un proyecto en Pamplona', 'En Maitagarri organicé la carta, las reservas y las páginas de celebraciones para que los clientes pudieran encontrarlas desde el móvil.', '/proyectos/#maitagarri', 'Ver el trabajo para Maitagarri'],
       ['Trabajo cercano y a medida', 'Las reuniones y la comunicación se adaptan al proyecto. El objetivo es conocer la personalidad del negocio y convertirla en una experiencia digital propia.'],
       ['Servicios disponibles', 'Diseño y desarrollo web, menús digitales QR, dirección visual y base técnica para SEO local.', '/servicios/'],
     ],
@@ -261,10 +262,9 @@ function schemaFor(page) {
 }
 
 function renderSections(page) {
-  return page.sections.map(([title, copy, href], index) => `
+  return page.sections.map(([title, copy, href, label]) => `
     <article class="content-block">
-      <span class="content-index">0${index + 1}</span>
-      <div><h2>${title}</h2><p>${copy}</p>${href ? `<a href="${link(href)}">Ver ${href.includes('servicios') ? 'servicio' : 'proyecto'} <span aria-hidden="true">↗</span></a>` : ''}</div>
+      <div><h2>${title}</h2><p>${copy}</p>${href ? `<a href="${href.startsWith('/') ? link(href) : href}">${label ?? 'Ver ' + title} <span aria-hidden="true">↗</span></a>` : ''}</div>
     </article>`).join('')
 }
 
@@ -283,10 +283,10 @@ function renderPortfolio(page) {
       `<a href="${href}" target="_blank" rel="noreferrer" aria-label="${label} de ${project.name}">${label} <span aria-hidden="true">↗</span></a>`
     ).join('')
     const image = project.image ? `<div class="project-tile-image"><img src="${asset(project.image)}" alt="${project.alt}" loading="lazy" decoding="async"><span aria-hidden="true">↗</span></div>` : ''
-    return `<article class="project-tile"><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ''}>${image}${details}</a>${actions ? `<div class="project-tile-actions">${actions}</div>` : ''}</article>`
+    return `<article class="project-tile" id="${project.id}"><a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ''}>${image}${details}</a>${actions ? `<div class="project-tile-actions">${actions}</div>` : ''}</article>`
   }
-  const groups = [['client', 'Marcas que confían en Quiroz'], ['own', 'Proyectos propios']]
-  return `<section class="project-portfolio" aria-labelledby="project-portfolio-title"><p class="kicker">Portfolio completo</p><h2 id="project-portfolio-title">Proyectos con carácter</h2>${groups.map(([group, title]) =>
+  const groups = [['client', 'Trabajos para clientes'], ['own', 'Proyectos propios']]
+  return `<section class="project-portfolio" aria-labelledby="project-portfolio-title"><h2 id="project-portfolio-title">Webs, cartas QR y herramientas</h2>${groups.map(([group, title]) =>
     `<section class="project-group" aria-labelledby="project-group-${group}"><h3 id="project-group-${group}">${title}</h3><div class="project-grid">${projects.filter(project => project.group === group).map(renderTile).join('')}</div></section>`
   ).join('')}</section>`
 }
@@ -377,20 +377,19 @@ function renderPage(page) {
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
-    <a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a>
-    <nav aria-label="Navegación principal"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}"${about ? ' aria-current="page"' : ''}>Sobre mí</a><a href="${link('/zonas/pamplona/')}">Pamplona</a></nav>
+    <a class="wordmark" href="${link('/')}" aria-label="Quiroz Studio, inicio">QUIROZ <span>STUDIO.</span></a>
+    <nav aria-label="Navegación principal"><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/servicios/')}">Servicios</a><a href="${link('/sobre-mi/')}"${about ? ' aria-current="page"' : ''}>Sobre mí</a><a href="${link('/zonas/pamplona/')}">Pamplona</a><a href="${link('/#contacto')}">Contactar</a></nav>
   </header>
   <main id="contenido"${about ? ' class="about-page"' : ''} tabindex="-1">
     ${about ? renderAbout(page) : `
-    <header class="page-hero">
-      <div class="hero-copy"><p class="kicker">${page.eyebrow}</p><h1>${page.h1}</h1><p>${page.intro}</p><a class="primary" href="${link('/#contacto')}">Hablar sobre mi proyecto <span aria-hidden="true">↗</span></a></div>
-      <div class="hero-mark" aria-hidden="true"><img src="${asset('/isotipo-quiroz.jpg')}" width="340" height="265" alt=""></div>
+    <header class="page-hero${page.type === 'CreativeWork' ? ' page-hero-case' : ''}">
+      <div class="hero-copy"><p class="kicker">${page.eyebrow}</p><h1>${page.h1}</h1><p>${page.intro}</p></div>
+      ${page.path === '/proyectos/menus-qr/' ? `<a class="case-image" href="https://quirozstudio.github.io/sanfermin-casapaco/"><img src="${asset('/portfolio/captura-casa-paco.webp')}" alt="Captura de la web de Casa Paco"><span>Abrir el portal de cartas de Casa Paco ↗</span></a>` : ''}
     </header>
-    <div class="trust-strip"><span>Diseño a medida</span><span>Mobile first</span><span>Pamplona · Navarra</span></div>
     ${renderPortfolio(page)}
     <section class="content-list" aria-label="Información principal">${renderSections(page)}</section>
     ${renderFaq(page)}
-    <section class="final-cta"><p class="kicker">Un proyecto con intención</p><h2>Tu negocio ya tiene una historia.<br>Vamos a hacer que se note.</h2><a class="primary" href="${link('/#contacto')}">Conocer a Quiroz <span aria-hidden="true">↗</span></a></section>`}
+    <section class="final-cta"><h2>¿Qué quieres mejorar en tu web?</h2><a class="primary" href="${link('/#contacto')}">Hablar con Bryans <span aria-hidden="true">↗</span></a></section>`}
   </main>
   <footer><a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a><p>Diseño web para hostelería y negocios locales en Pamplona.</p><nav aria-label="Enlaces del pie"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}">Sobre mí</a></nav></footer>
 </body>

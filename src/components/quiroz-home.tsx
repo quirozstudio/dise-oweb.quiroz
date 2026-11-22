@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import {
-  ArrowUpRight, Award, CalendarDays, ChartNoAxesColumnIncreasing, ChevronRight,
-  CodeXml, Heart, Laptop, Layers2, MapPin, Menu, MessageCircle, Monitor,
-  Play, QrCode, Target, UsersRound, X, Zap,
+  ArrowUpRight, ChartNoAxesColumnIncreasing, ChevronRight,
+  CodeXml, Laptop, Menu, MessageCircle,
+  Play, QrCode, X,
 } from 'lucide-react'
 import projects from '@/content/projects.json'
 import { HomePortfolio } from './quiroz-home-portfolio'
-import { HeroMonitor } from './quiroz-hero-monitor'
 import { QuirozIntro } from './quiroz-intro'
 import './quiroz-home.css'
 
@@ -22,51 +21,21 @@ const links = [
 ] as const
 
 const services = [
-  [Laptop, 'Diseño web', 'Una web rápida, a medida y adaptada a tu negocio.', BASE + 'servicios/diseno-web-restaurantes/'],
-  [QrCode, 'Cartas QR', 'Digitaliza tu carta y facilita su consulta desde el móvil.', BASE + 'servicios/menus-digitales-qr/'],
-  [CalendarDays, 'Reservas online', 'Integra reservas y accesos directos de contacto.', '#contacto'],
-  [ChartNoAxesColumnIncreasing, 'Visibilidad local', 'Ayuda a que te encuentren cuando buscan en tu zona.', BASE + 'servicios/seo-local/'],
+  [Laptop, 'Diseño web y reservas', 'Organizo la carta, la ubicación y las reservas en una web fácil de usar desde el móvil.', BASE + 'servicios/diseno-web-restaurantes/'],
+  [QrCode, 'Cartas QR', 'Tus clientes pueden consultar platos, precios e idiomas desde la mesa.', BASE + 'servicios/menus-digitales-qr/'],
+  [ChartNoAxesColumnIncreasing, 'SEO local', 'Reviso cómo se encuentra tu negocio en Google y qué información aparece.', BASE + 'servicios/seo-local/'],
 ] as const
 
 const process = [
-  ['Hablamos', 'Conocemos tu negocio y tus objetivos.'],
-  ['Diseñamos', 'Creamos una propuesta visual y funcional.'],
-  ['Desarrollamos', 'Construimos y probamos la web.'],
-  ['Lanzamos', 'Publicamos y te acompañamos después.'],
-] as const
-
-const aboutPoints = [
-  [Heart, 'Cercanía real', 'Acompañamiento en todo el proceso.'],
-  [Target, 'Objetivos claros', 'Cada decisión responde a lo que necesita tu negocio.'],
-  [MapPin, 'Conocimiento local', 'Desde Pamplona, para negocios de toda España.'],
-] as const
-
-const advantages = [
-  [Award, 'Diseño con identidad', 'Webs alineadas con la voz y el carácter de tu marca.'],
-  [Zap, 'Rápidas y adaptadas', 'Preparadas para el móvil y los buscadores.'],
-  [UsersRound, 'Acompañamiento real', 'Soporte, mantenimiento y mejoras.'],
-  [MapPin, 'Desde Pamplona', 'Una visión local y un trato cercano.'],
+  ['Hablamos', 'Me cuentas qué necesita tu negocio y cómo atiendes a tus clientes.'],
+  ['Diseño', 'Te enseño una propuesta y revisamos juntos las páginas principales.'],
+  ['Probamos', 'Comprobamos desde el móvil la carta, las reservas o el contacto.'],
+  ['Publico', 'Pongo la web en marcha y acordamos cómo mantenerla al día.'],
 ] as const
 
 function Brand() {
   return (
     <a className="qh-header-wordmark" href={BASE} aria-label="Quiroz Studio, inicio">QUIROZ <span>STUDIO.</span></a>
-  )
-}
-
-function FeatureList({ items, className }: {
-  items: typeof aboutPoints | typeof advantages
-  className: string
-}) {
-  return (
-    <ul className={className}>
-      {items.map(([Icon, title, description]) => (
-        <li key={title}>
-          <Icon aria-hidden="true" />
-          <div><h3>{title}</h3><p>{description}</p></div>
-        </li>
-      ))}
-    </ul>
   )
 }
 
@@ -177,23 +146,20 @@ export function QuirozHome() {
         <div className="qh-hero-content">
           <p className="qh-kicker">Estudio digital · Pamplona <span className="qh-kicker-rule" /></p>
           <h1 id="hero-title" tabIndex={-1}>
-            <span>Tu negocio merece</span>{' '}
-            <span>una presencia digital</span>{' '}
-            <em>a su altura.</em>
+            <span>Diseño webs para restaurantes y negocios locales</span>{' '}
+            <em>en Pamplona.</em>
           </h1>
-          <p>Diseño web y soluciones digitales para negocios que quieren destacar, transmitir confianza y conectar con sus clientes.</p>
+          <p>Soy Bryans Astorga. Creo webs donde tus clientes pueden consultar la carta, reservar mesa o contactar contigo desde el móvil.</p>
           <div className="qh-hero-buttons">
-            <a className="qh-button" href="#portfolio">Explorar proyectos <ArrowUpRight aria-hidden="true" /></a>
-            <a className="qh-link" href={BASE + 'sobre-mi/'}>Sobre el estudio</a>
+            <a className="qh-button" href="#portfolio">Ver proyectos <ArrowUpRight aria-hidden="true" /></a>
+            <a className="qh-link" href={BASE + 'sobre-mi/'}>Sobre mí</a>
           </div>
-          <ul className="qh-hero-points" aria-label="Enfoque del estudio">
-            <li><Monitor aria-hidden="true" /><span>Diseño web<br /> a medida</span></li>
-            <li><Layers2 aria-hidden="true" /><span>Experiencia<br /> digital cuidada</span></li>
-            <li><ChartNoAxesColumnIncreasing aria-hidden="true" /><span>Resultados<br /> para tu negocio</span></li>
-          </ul>
         </div>
-        <figure className="qh-hero-art">
-          <HeroMonitor defer={intro === 'arrival'} />
+        <figure className="qh-featured-project">
+          <a href={BASE + 'proyectos/#casa-paco'}>
+            <img src={BASE + 'portfolio/captura-casa-paco.webp'} alt="Captura de la web de Casa Paco" fetchPriority="high" />
+            <span>Casa Paco · Web y carta QR <ArrowUpRight aria-hidden="true" /></span>
+          </a>
         </figure>
       </section>
 
@@ -202,7 +168,7 @@ export function QuirozHome() {
       <section className="qh-services qh-section" aria-labelledby="qh-services-title">
         <header className="qh-band-heading">
           <p className="qh-kicker">Servicios <span className="qh-kicker-rule" /></p>
-          <h2 id="qh-services-title">Soluciones digitales para negocios reales</h2>
+          <h2 id="qh-services-title">Diseño web, cartas QR y visibilidad en Google</h2>
         </header>
         <ul className="qh-service-list">
           {services.map(([Icon, title, description, href]) => (
@@ -224,16 +190,15 @@ export function QuirozHome() {
         <div className="qh-about-content">
           <p className="qh-kicker">Sobre mí <span className="qh-kicker-rule" /></p>
           <h2 id="qh-about-title">Bryans Astorga</h2>
-          <p>Diseñador web y creador digital. Ayudo a negocios de hostelería, comercios y servicios a tener una presencia online profesional, cercana y efectiva.</p>
+          <p>Trabajo contigo desde la primera conversación hasta la publicación. Empiezo por lo que tus clientes necesitan encontrar o hacer en tu web.</p>
           <a className="qh-signature" href={BASE + 'sobre-mi/'} aria-label="Conocer más sobre Bryans Astorga">Bryans Astorga <ArrowUpRight aria-hidden="true" /></a>
         </div>
-        <FeatureList items={aboutPoints} className="qh-about-points" />
       </section>
 
       <section className="qh-process qh-section" aria-labelledby="qh-process-title">
         <header className="qh-band-heading">
-          <p className="qh-kicker">Nuestro proceso <span className="qh-kicker-rule" /></p>
-          <h2 id="qh-process-title">De tu idea a una web que funciona</h2>
+          <p className="qh-kicker">Cómo trabajo <span className="qh-kicker-rule" /></p>
+          <h2 id="qh-process-title">De la primera conversación a la publicación</h2>
         </header>
         <ol className="qh-process-list">
           {process.map(([title, description], index) => (
@@ -247,19 +212,15 @@ export function QuirozHome() {
       </section>
 
       <div className="qh-closing">
-        <section className="qh-trust qh-section" aria-labelledby="qh-trust-title">
-          <h2 className="qh-kicker" id="qh-trust-title">¿Por qué Quiroz Studio? <span className="qh-kicker-rule" /></h2>
-          <FeatureList items={advantages} className="qh-trust-points" />
-        </section>
 
         <section id="contacto" className="qh-contact qh-section" aria-labelledby="qh-contact-title">
           <div className="qh-contact-banner">
             <MessageCircle className="qh-contact-icon" aria-hidden="true" />
             <div className="qh-contact-copy">
               <h2 id="qh-contact-title">Hablemos de tu proyecto</h2>
-              <p>Cuéntame tu idea y veamos cómo podemos darle forma.</p>
+              <p>Cuéntame qué quieres crear o qué te gustaría mejorar en tu web.</p>
             </div>
-            <a className="qh-button" href={contactHref} target="_blank" rel="noreferrer">Contactar ahora <ArrowUpRight aria-hidden="true" /></a>
+            <a className="qh-button" href={contactHref} target="_blank" rel="noreferrer">Escribirme por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
           </div>
           <details className="qh-contact-details">
             <summary>Preparar un mensaje para Bryans</summary>

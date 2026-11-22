@@ -44,15 +44,18 @@ function ProjectCard({ project }: { project: Project }) {
           </span>
         </a>
         {project.actions && (
-          <ul className="qhp-card-actions" aria-label={'Enlaces de ' + project.name}>
-            {project.actions.map(action => (
-              <li key={action.label}>
-                <a href={action.href} target="_blank" rel="noreferrer" aria-label={action.label + ' de ' + project.name}>
-                  {action.label} <ArrowUpRight aria-hidden="true" />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <>
+            <p className="qhp-case-summary">{project.statement}</p>
+            <ul className="qhp-card-actions" aria-label={'Enlaces de ' + project.name}>
+              {project.actions.map(action => (
+                <li key={action.label}>
+                  <a href={action.href} target="_blank" rel="noreferrer" aria-label={action.label + ' de ' + project.name}>
+                    {action.label} <ArrowUpRight aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
         )}
       </article>
     </li>
@@ -115,11 +118,11 @@ export function HomePortfolio({ items }: { items: readonly Project[] }) {
     <section className="qhp" id="portfolio" aria-labelledby="qhp-title">
       <div className="qhp-inner">
         <header className="qhp-heading">
-          <p className="qhp-meta">Portfolio de Quiroz Studio</p>
-          <h2 id="qhp-title">Proyectos con carácter</h2>
+          <p className="qhp-meta">Trabajo seleccionado</p>
+          <h2 id="qhp-title">Webs, cartas QR y herramientas</h2>
           <a className="qhp-all" href={base + 'proyectos/'}>Ver todos los proyectos <ArrowUpRight aria-hidden="true" /></a>
         </header>
-        <PortfolioRow id="qhp-clientes" title="Marcas que confían en Quiroz" items={items.filter(project => project.group === 'client')} />
+        <PortfolioRow id="qhp-clientes" title="Trabajos para clientes" items={items.filter(project => project.group === 'client')} />
         <PortfolioRow id="qhp-propios" title="Proyectos propios" items={items.filter(project => project.group === 'own')} />
       </div>
     </section>

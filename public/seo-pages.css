@@ -112,3 +112,17 @@ footer > p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; 
 .project-tile-description> :not(.project-tile-image) { margin-inline: clamp(16px, 2vw, 28px); }
 .project-tile-description h4 { margin-top: 16px; }
 .project-tile-description p { margin-bottom: 24px; }
+
+.site-header { grid-template-columns: minmax(0, 1fr) auto; }
+.wordmark { width: fit-content; font: 700 clamp(20px, 2.35vw, 32px)/1 Arial, sans-serif; letter-spacing: -.045em; }
+.wordmark span { color: var(--gold); }
+.page-hero { grid-template-columns: minmax(0, 1fr); padding-block: clamp(32px, 5vw, 72px); }
+.page-hero-case:has(.case-image) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.case-image { display: grid; gap: 10px; color: var(--gold); text-decoration: underline; }
+.case-image img { display: block; width: 100%; border-radius: 8px; }
+.content-block { grid-template-columns: minmax(0, 54rem); }
+.project-portfolio { padding-block: clamp(36px, 5vw, 72px); }
+.project-tile[id] { scroll-margin-top: 18px; }
+@media (max-width: 850px) {
+  .page-hero-case:has(.case-image) { grid-template-columns: minmax(0, 1fr); }
+}

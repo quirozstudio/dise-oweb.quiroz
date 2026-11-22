@@ -1,5 +1,46 @@
 [
   {
+    "id": "casa-paco",
+    "name": "Casa Paco",
+    "group": "client",
+    "sector": "Hostelería · Web y carta QR",
+    "image": "/portfolio/captura-casa-paco.webp",
+    "alt": "Captura de la web de Casa Paco",
+    "href": "https://casapacopamplona.com/",
+    "statement": "Casa Paco necesitaba una web para presentar el restaurante y una carta que se pudiera abrir desde la mesa. Diseñé la web y la carta de San Fermín en español, inglés y francés.",
+    "actions": [
+      {
+        "label": "Web",
+        "href": "https://casapacopamplona.com/"
+      },
+      {
+        "label": "Portal de cartas",
+        "href": "https://quirozstudio.github.io/sanfermin-casapaco/"
+      }
+    ]
+  },
+  {
+    "id": "maitagarri",
+    "name": "Maitagarri",
+    "group": "client",
+    "sector": "Hostelería · Web y carta QR",
+    "image": "/portfolio/captura-maitagarri.webp",
+    "alt": "Captura de la web del Asador Maitagarri",
+    "href": "https://asadormaitagarri.com/",
+    "externalHref": "https://asadormaitagarri.com/carta.html#menu",
+    "statement": "Organicé la web del asador para que sus clientes puedan consultar la carta, ver opciones para celebraciones y acceder a las reservas desde el móvil.",
+    "actions": [
+      {
+        "label": "Web",
+        "href": "https://asadormaitagarri.com/"
+      },
+      {
+        "label": "Carta del asador",
+        "href": "https://asadormaitagarri.com/carta.html#menu"
+      }
+    ]
+  },
+  {
     "id": "north-division",
     "name": "North Division",
     "group": "client",
@@ -8,35 +49,6 @@
     "alt": "Estructura industrial de la portada de North Division",
     "href": "https://quirozstudio.github.io/north.division/",
     "statement": "Web en desarrollo para presentar el trabajo de North Division en ingeniería."
-  },
-  {
-    "id": "maitagarri",
-    "name": "Maitagarri",
-    "group": "client",
-    "sector": "Hostelería · Web y carta QR",
-    "image": "/portfolio/portada-maitagarri.webp",
-    "alt": "Fachada iluminada del Asador Maitagarri en Pamplona",
-    "href": "https://melodic-croquembouche-19fdee.netlify.app/",
-    "externalHref": "https://quirozstudio.github.io/maitagarri.sanfermin/",
-    "statement": "Una web para el asador y una carta QR con el carácter de la brasa, el vino y Pamplona.",
-    "actions": [
-      { "label": "Web", "href": "https://melodic-croquembouche-19fdee.netlify.app/" },
-      { "label": "Carta QR", "href": "https://quirozstudio.github.io/maitagarri.sanfermin/" }
-    ]
-  },
-  {
-    "id": "casa-paco",
-    "name": "Casa Paco",
-    "group": "client",
-    "sector": "Hostelería · Web y carta QR",
-    "image": "/portfolio/portada-casa-paco.webp",
-    "alt": "Torrija de brioche de la carta de Casa Paco",
-    "href": "https://casapacopamplona.com/",
-    "statement": "Una web para conocer el restaurante y una carta QR para consultar el menú desde la mesa.",
-    "actions": [
-      { "label": "Web", "href": "https://casapacopamplona.com/" },
-      { "label": "Carta QR", "href": "https://quirozstudio.github.io/sanfermin-casapaco/" }
-    ]
   },
   {
     "id": "karla-castaneda",
