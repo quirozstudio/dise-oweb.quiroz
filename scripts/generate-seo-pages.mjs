@@ -236,7 +236,7 @@ function schemaFor(page) {
       '@id': `${SITE}/#bryans`,
       name: 'Bryans Astorga',
       url: absolute(page.path),
-      image: absolute('/bryan-quiroz.jpg'),
+      image: absolute('/bryans-foto-instagram.png'),
       jobTitle: 'Diseñador y desarrollador web',
       worksFor: { '@id': `${SITE}/#business` },
     })
@@ -310,7 +310,7 @@ function renderAbout(page) {
         </div>
       </div>
       <figure class="about-portrait">
-        <img src="${asset('/bryan-quiroz.jpg')}" alt="Bryans Astorga trabajando en su estudio" width="576" height="1280" fetchpriority="high" decoding="async">
+        <img src="${asset('/bryans-foto-instagram.png')}" alt="Bryans Astorga trabajando en una cafetería" width="1536" height="1024" fetchpriority="high" decoding="async">
         <figcaption><span>Bryans Astorga</span><span>Quiroz Studio · Pamplona</span></figcaption>
       </figure>
     </header>
@@ -346,7 +346,7 @@ function renderPage(page) {
   const schema = escapeJson(schemaFor(page))
   const about = page.type === 'AboutPage'
   return `<!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -373,14 +373,12 @@ function renderPage(page) {
   <meta name="twitter:description" content="${page.description}">
   <meta name="twitter:image" content="${image}">
   <script type="application/ld+json">${schema}</script>
-  <script>document.documentElement.dataset.theme=localStorage.getItem('quiroz-theme')==='light'?'light':'dark'</script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a>
     <nav aria-label="Navegación principal"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}"${about ? ' aria-current="page"' : ''}>Sobre mí</a><a href="${link('/zonas/pamplona/')}">Pamplona</a></nav>
-    <button class="theme-button" type="button" aria-label="Cambiar tema">◐</button>
   </header>
   <main id="contenido"${about ? ' class="about-page"' : ''} tabindex="-1">
     ${about ? renderAbout(page) : `
@@ -395,10 +393,6 @@ function renderPage(page) {
     <section class="final-cta"><p class="kicker">Un proyecto con intención</p><h2>Tu negocio ya tiene una historia.<br>Vamos a hacer que se note.</h2><a class="primary" href="${link('/#contacto')}">Conocer a Quiroz <span aria-hidden="true">↗</span></a></section>`}
   </main>
   <footer><a class="logo" href="${link('/')}"><img src="${asset('/isotipo-quiroz.jpg')}" width="44" height="44" alt=""><span>QUIROZ<small>Digital Studio</small></span></a><p>Diseño web para hostelería y negocios locales en Pamplona.</p><nav aria-label="Enlaces del pie"><a href="${link('/servicios/')}">Servicios</a><a href="${link('/proyectos/')}">Proyectos</a><a href="${link('/sobre-mi/')}">Sobre mí</a></nav></footer>
-  <script>
-    const button=document.querySelector('.theme-button');
-    button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;localStorage.setItem('quiroz-theme',next)});
-  </script>
 </body>
 </html>`
 }

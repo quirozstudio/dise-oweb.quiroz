@@ -2,8 +2,8 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import type { FormEvent } from 'react'
 import {
   ArrowUpRight, Award, CalendarDays, ChartNoAxesColumnIncreasing, ChevronRight,
-  CodeXml, Heart, Laptop, Layers2, MapPin, Menu, MessageCircle, Monitor, Moon,
-  Play, QrCode, Sun, Target, UsersRound, X, Zap,
+  CodeXml, Heart, Laptop, Layers2, MapPin, Menu, MessageCircle, Monitor,
+  Play, QrCode, Target, UsersRound, X, Zap,
 } from 'lucide-react'
 import projects from '@/content/projects.json'
 import { HomePortfolio } from './quiroz-home-portfolio'
@@ -111,10 +111,6 @@ export function QuirozHome() {
   const [intro, setIntro] = useState<'arrival' | 'replay' | null>(() => shouldPlayIntro() ? 'arrival' : null)
   const finishIntro = useCallback(() => setIntro(null), [])
   const [menuOpen, setMenuOpen] = useState(false)
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    try { return localStorage.getItem('quiroz-theme') === 'light' ? 'light' : 'dark' } catch { return 'dark' }
-  })
-
   useLayoutEffect(() => {
     const root = document.documentElement
     const sessionKey = root.dataset.quirozIntroKey
@@ -125,10 +121,7 @@ export function QuirozHome() {
 
   useEffect(() => {
     document.title = 'Diseño web en Pamplona para negocios locales | Quiroz'
-    document.documentElement.dataset.theme = theme
-    document.documentElement.style.colorScheme = theme
-    try { localStorage.setItem('quiroz-theme', theme) } catch { /* Storage can be disabled. */ }
-  }, [theme])
+  }, [])
 
   useLayoutEffect(() => {
     const root = shell.current
@@ -169,9 +162,6 @@ export function QuirozHome() {
         <Brand />
         <nav className="qh-nav" aria-label="Navegación principal"><NavigationLinks /></nav>
         <div className="qh-actions">
-          <button className="qh-theme" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? 'Activar modo claro' : 'Activar modo oscuro'}>
-            {theme === 'dark' ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
-          </button>
           <a className="qh-header-cta" href="#contacto">Contactar <ArrowUpRight aria-hidden="true" /></a>
           <button className="qh-menu" type="button" ref={menuButton} onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen} aria-controls="qh-mobile-nav">
             {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
@@ -229,7 +219,7 @@ export function QuirozHome() {
 
       <section className="qh-about qh-section" aria-labelledby="qh-about-title">
         <figure className="qh-portrait">
-          <img src={BASE + 'bryan-quiroz.jpg'} alt="Bryans Astorga en su estudio" width="576" height="1280" loading="lazy" decoding="async" />
+          <img src={BASE + 'bryans-foto-instagram.png'} alt="Bryans Astorga trabajando en una cafetería" width="1536" height="1024" loading="lazy" decoding="async" />
         </figure>
         <div className="qh-about-content">
           <p className="qh-kicker">Sobre mí <span className="qh-kicker-rule" /></p>

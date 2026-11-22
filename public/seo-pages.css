@@ -11,16 +11,6 @@
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-[data-theme="light"] {
-  --bg: #f5eee3;
-  --surface: #e7dccb;
-  --text: #29221c;
-  --muted: #5d5146;
-  --gold: #82572f;
-  --line: #35261a30;
-  color-scheme: light;
-}
-
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--text); }
@@ -46,8 +36,6 @@ button { font: inherit; }
 .site-header nav, footer nav { display: flex; align-items: center; flex-wrap: wrap; gap: 8px clamp(15px, 2.8vw, 38px); }
 .site-header nav a, footer nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
 :is(.site-header, footer) nav a:is(:hover, [aria-current="page"]) { color: var(--gold); }
-.theme-button { justify-self: end; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--gold); cursor: pointer; }
-.theme-button:hover { border-color: var(--gold); }
 
 .page-hero {
   display: grid;

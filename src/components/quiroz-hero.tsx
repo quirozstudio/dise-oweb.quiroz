@@ -12,14 +12,12 @@ import {
   ChevronRight,
   Menu,
   MessageCircle,
-  Moon,
-  Sun,
   X,
 } from 'lucide-react'
 
 const BASE_URL = import.meta.env.BASE_URL
 const brandIsotypeSrc = `${BASE_URL}isotipo-quiroz.jpg`
-const PHOTO_SRC = `${BASE_URL}bryan-quiroz.jpg`
+const PHOTO_SRC = `${BASE_URL}bryans-foto-instagram.png`
 const CASA_PACO_HERO = `${BASE_URL}casa-paco-fachada.webp`
 const PORTFOLIO_ASSETS = {
   karla: `${BASE_URL}portfolio/karla.webp`,
@@ -538,7 +536,7 @@ function PortfolioNarrative() {
     { key: 'maitagarri', number: '03', name: 'Maitagarri · San Fermín', kind: 'Campaña · Hostelería · Carta', statement: 'Una identidad preparada para el momento más intenso del año.', image: PORTFOLIO_ASSETS.maitagarri, width: 1023, height: 1537, alt: 'Fachada del Asador Maitagarri en Pamplona', href: 'https://github.com/quirozstudio/maitagarri.sanfermin' },
     { key: 'north', number: '04', name: 'North Division', kind: 'Concept / Demo · Dirección creativa', statement: 'La ingeniería explicada como una construcción cinematográfica.', image: PORTFOLIO_ASSETS.north, width: 1500, height: 844, alt: 'Estructura industrial del concepto North Division', href: 'https://github.com/quirozstudio/north.division' },
     { key: 'birth', number: '05', name: 'Nacimientos Quiroz', kind: 'Experiencia personal · Memoria', statement: 'Tecnología que baja la voz para dejar hablar a los recuerdos.', image: PORTFOLIO_ASSETS.nacimientos, width: 1500, height: 844, alt: 'Fotografía de recién nacida del proyecto Nacimientos Quiroz', href: 'https://github.com/quirozstudio/nacimientos.quiroz' },
-    { key: 'blog', number: '06', name: 'Raíces', kind: 'Memoria · Escritura privada', statement: 'Un espacio íntimo para escribir, guardar recuerdos y compartirlos solo con quien elijas.', image: PORTFOLIO_ASSETS.blog, width: 1400, height: 933, alt: 'Manos sosteniendo una fotografía familiar sobre un cuaderno en el proyecto Raíces', href: 'https://github.com/quirozstudio/raices-quiroz' },
+    { key: 'blog', number: '06', name: 'Raíces', kind: 'Memoria · Escritura privada', statement: 'Un espacio íntimo para escribir, guardar recuerdos y compartirlos solo con quien elijas.', image: PORTFOLIO_ASSETS.blog, width: 1400, height: 933, alt: 'Manos sosteniendo una fotografía familiar sobre un cuaderno en el proyecto Raíces', href: 'https://raices-quiroz.bryans-astorga.chatgpt.site/' },
   ]
   return (
     <section id="proyectos" className="portfolio-narrative">
@@ -558,14 +556,6 @@ function PortfolioNarrative() {
 
 export function QuirozHero() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => localStorage.getItem('quiroz-theme') === 'light' ? 'light' : 'dark')
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme
-    document.documentElement.style.colorScheme = theme
-    localStorage.setItem('quiroz-theme', theme)
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#15100c' : '#f4ecdf')
-  }, [theme])
 
   useEffect(() => {
     document.title = 'Diseño web en Pamplona para negocios locales | Quiroz'
@@ -603,17 +593,6 @@ export function QuirozHero() {
         </nav>
 
         <div className="header-actions">
-          <button
-            className="theme-toggle"
-            type="button"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            aria-label={`Activar modo ${theme === 'dark' ? 'claro' : 'oscuro'}`}
-            title={`Modo ${theme === 'dark' ? 'claro' : 'oscuro'}`}
-          >
-            <Sun size={14} aria-hidden="true" />
-            <span className="theme-toggle-track"><i /></span>
-            <Moon size={14} aria-hidden="true" />
-          </button>
           <a href="#contacto" className="nav-cta">Hablemos <ArrowUpRight size={15} /></a>
           <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú" aria-expanded={menuOpen}>
             {menuOpen ? <X /> : <Menu />}
@@ -680,7 +659,7 @@ export function QuirozHero() {
       </section>
 
       <section className="about-section section-pad">
-        <div className="about-photo reveal"><img src={PHOTO_SRC} alt="Bryans Astorga, diseñador web de Quiroz Digital Studio" width="576" height="1280" loading="lazy" decoding="async" /><span>Diseñando desde Pamplona</span></div>
+        <div className="about-photo reveal"><img src={PHOTO_SRC} alt="Bryans Astorga trabajando en una cafetería" width="1536" height="1024" loading="lazy" decoding="async" /><span>Diseñando desde Pamplona</span></div>
         <div className="about-copy reveal">
           <p className="eyebrow"><span /> Sobre mí</p>
           <h2>Tu proyecto no pasa por cinco departamentos. <em>Hablamos tú y yo.</em></h2>
