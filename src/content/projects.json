@@ -1,5 +1,21 @@
 [
   {
+    "id": "sabor-y-tentacion",
+    "name": "Sabor y Tentación",
+    "group": "client",
+    "sector": "Repostería · Tartas personalizadas",
+    "image": "/portfolio/sabor-y-tentacion.jpg",
+    "alt": "Tarta floral personalizada de Sabor y Tentación",
+    "href": "https://saborytentacion.es/",
+    "statement": "Una web para presentar tartas personalizadas, mostrar sus creaciones y ayudar a cada cliente a elegir sabores y rellenos para sus celebraciones.",
+    "actions": [
+      {
+        "label": "Web",
+        "href": "https://saborytentacion.es/"
+      }
+    ]
+  },
+  {
     "id": "casa-paco",
     "name": "Casa Paco",
     "group": "client",
