@@ -10,43 +10,14 @@
   background-image:
     linear-gradient(90deg, rgb(17 16 14 / .95) 0%, rgb(17 16 14 / .84) 42%, rgb(17 16 14 / .66) 100%),
     linear-gradient(0deg, rgb(10 9 8 / .72), transparent 58%),
-    url('/quiroz-hero-architecture.webp');
+    url('/quiroz-portfolio-gallery.webp');
   background-position: center, center, center 43%;
   background-size: cover;
   color: #f3eadf;
   padding: clamp(32px, 4vw, 68px) var(--gutter, clamp(20px, 5vw, 90px));
 }
 
-.qhp::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  border-block: 1px solid rgb(214 190 159 / .17);
-  background: radial-gradient(ellipse at 78% 0%, rgb(194 144 91 / .18), transparent 48%);
-  content: "";
-  pointer-events: none;
-}
-
-.qhp-inner {
-  margin-inline: auto;
-  max-width: 105rem;
-}
-
-.qhp-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 10px clamp(12px, 1.6vw, 28px);
-  margin-top: clamp(24px, 3vw, 45px);
-}
-
-.qhp-row + .qhp-row { padding-top: clamp(22px, 2.8vw, 42px); border-top: 1px solid rgb(214 190 159 / .24); }
-.qhp-row > h3 { margin: 0; color: #f3eadf; font: 400 clamp(22px, 2.05vw, 34px)/1.15 Georgia, serif; letter-spacing: -.025em; }
-
-.qhp-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.qhp-case-summary {
   margin: 0;
   font: 650 10px/1.4 Arial, sans-serif;
   letter-spacing: .17em;

@@ -1,0 +1,357 @@
+.trusted-brands {
+  --tb-ink: #f4eee6;
+  --tb-muted: #bdb3a8;
+  --tb-champagne: #dfb47f;
+  --tb-charcoal: #141312;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(38px, 4.7vw, 78px) var(--gutter, 20px) clamp(30px, 3.7vw, 58px);
+  background:
+    radial-gradient(ellipse at 70% 0%, rgb(117 73 35 / .15), transparent 42%),
+    var(--tb-charcoal);
+  color: var(--tb-ink);
+}
+
+.trusted-brands__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 105rem;
+  margin-inline: auto;
+}
+
+.trusted-brands h2 {
+  max-width: none;
+  margin: 0;
+  color: #c9bdb0;
+  font: 600 clamp(12px, 1.05vw, 16px) / 1.4 Arial, sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.trusted-brands__pause {
+  flex: none;
+  min-height: 40px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid rgb(223 180 127 / .55);
+  background: transparent;
+  color: var(--tb-muted);
+  font: 600 10px / 1.3 Arial, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.trusted-brands__pause:hover,
+.trusted-brands__pause[aria-pressed="true"] {
+  color: var(--tb-champagne);
+}
+
+.trusted-brands__viewport {
+  position: relative;
+  margin: clamp(28px, 4vw, 64px) calc(var(--gutter, 20px) * -1) 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.trusted-brands__viewport::before,
+.trusted-brands__viewport::after {
+  position: absolute;
+  z-index: 2;
+  inset-block: 0;
+  width: clamp(60px, 14vw, 220px);
+  content: "";
+  pointer-events: none;
+}
+
+.trusted-brands__viewport::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--tb-charcoal), rgb(20 19 18 / 0));
+}
+
+.trusted-brands__viewport::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--tb-charcoal), rgb(20 19 18 / 0));
+}
+
+.trusted-brands__track {
+  display: flex;
+  width: max-content;
+  animation: trusted-brands-marquee 42s linear infinite;
+  will-change: transform;
+}
+
+.trusted-brands__track.is-paused,
+.trusted-brands__viewport:hover .trusted-brands__track,
+.trusted-brands__viewport:focus-within .trusted-brands__track {
+  animation-play-state: paused;
+}
+
+.trusted-brands__group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: clamp(42px, 7vw, 126px);
+  min-width: max-content;
+  margin: 0;
+  padding: 10px clamp(48px, 8vw, 140px) 18px;
+  list-style: none;
+}
+
+.trusted-brands__item {
+  display: grid;
+  flex: 0 0 clamp(150px, 15vw, 246px);
+  min-height: 92px;
+  place-items: center;
+}
+
+.trusted-brands__interactive {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 72px;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.trusted-brands__interactive:focus-visible {
+  outline: 2px solid var(--tb-champagne);
+  outline-offset: 8px;
+}
+
+.trusted-brands__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ded7ce;
+  opacity: .74;
+  transition: color .35s ease, opacity .35s ease, transform .35s ease;
+}
+
+.trusted-brands__interactive:hover .trusted-brands__mark,
+.trusted-brands__interactive:focus-visible .trusted-brands__mark {
+  color: var(--tb-champagne);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.trusted-brands__primary,
+.trusted-brands__secondary,
+.trusted-brands__detail {
+  display: block;
+}
+
+.trusted-brands__secondary,
+.trusted-brands__detail {
+  color: var(--tb-muted);
+  transition: color .35s ease;
+}
+
+.trusted-brands__interactive:hover .trusted-brands__secondary,
+.trusted-brands__interactive:focus-visible .trusted-brands__secondary,
+.trusted-brands__interactive:hover .trusted-brands__detail,
+.trusted-brands__interactive:focus-visible .trusted-brands__detail {
+  color: inherit;
+}
+
+.trusted-brands__mark--casa-paco {
+  flex-direction: column;
+  gap: 3px;
+}
+
+.trusted-brands__mark--casa-paco .trusted-brands__primary {
+  font: 400 clamp(23px, 2.2vw, 38px) / .95 Georgia, serif;
+  letter-spacing: -.065em;
+}
+
+.trusted-brands__mark--casa-paco .trusted-brands__secondary {
+  font: 600 9px / 1 Arial, sans-serif;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+}
+
+.trusted-brands__mark--maitagarri {
+  flex-direction: column;
+  gap: 7px;
+}
+
+.trusted-brands__mark--maitagarri .trusted-brands__primary {
+  font: 600 clamp(18px, 1.7vw, 31px) / 1 Arial, sans-serif;
+  letter-spacing: .19em;
+}
+
+.trusted-brands__mark--maitagarri .trusted-brands__secondary {
+  font: 400 9px / 1 Arial, sans-serif;
+  letter-spacing: .46em;
+  text-transform: uppercase;
+}
+
+.trusted-brands__mark--north-division {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0 8px;
+  align-items: end;
+  text-align: left;
+}
+
+.trusted-brands__mark--north-division .trusted-brands__primary,
+.trusted-brands__mark--north-division .trusted-brands__secondary {
+  font: 800 clamp(22px, 2.2vw, 39px) / .82 Arial, sans-serif;
+  letter-spacing: -.1em;
+}
+
+.trusted-brands__mark--north-division .trusted-brands__secondary {
+  color: inherit;
+}
+
+.trusted-brands__mark--north-division .trusted-brands__detail {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  font: 600 8px / 1 Arial, sans-serif;
+  letter-spacing: .28em;
+}
+
+.trusted-brands__mark--rasel,
+.trusted-brands__mark--cony-makeup {
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trusted-brands__mark--rasel .trusted-brands__primary {
+  font: italic 400 clamp(30px, 3vw, 50px) / .85 Georgia, serif;
+  letter-spacing: -.08em;
+}
+
+.trusted-brands__mark--rasel .trusted-brands__secondary {
+  font: 600 8px / 1 Arial, sans-serif;
+  letter-spacing: .36em;
+  text-transform: uppercase;
+}
+
+.trusted-brands__mark--sabor-y-tentacion {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trusted-brands__mark--sabor-y-tentacion .trusted-brands__primary {
+  font: 400 clamp(35px, 3.6vw, 58px) / .72 Georgia, serif;
+  letter-spacing: -.14em;
+}
+
+.trusted-brands__mark--sabor-y-tentacion .trusted-brands__secondary {
+  font: italic 400 10px / 1 Georgia, serif;
+}
+
+.trusted-brands__mark--karla-castaneda {
+  flex-direction: column;
+  gap: 5px;
+}
+
+.trusted-brands__mark--karla-castaneda .trusted-brands__primary {
+  font: 400 clamp(24px, 2.4vw, 42px) / .85 Georgia, serif;
+  letter-spacing: -.07em;
+}
+
+.trusted-brands__mark--karla-castaneda .trusted-brands__secondary,
+.trusted-brands__mark--cony-makeup .trusted-brands__secondary {
+  font: 600 8px / 1 Arial, sans-serif;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.trusted-brands__mark--cony-makeup .trusted-brands__primary {
+  font: 600 clamp(27px, 2.7vw, 46px) / .8 Arial, sans-serif;
+  letter-spacing: -.08em;
+  text-transform: uppercase;
+}
+
+.trusted-brands__mark--encargos {
+  flex-direction: column;
+  gap: 7px;
+}
+
+.trusted-brands__mark--encargos .trusted-brands__primary {
+  font: 700 clamp(17px, 1.7vw, 29px) / 1 Arial, sans-serif;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.trusted-brands__mark--encargos .trusted-brands__secondary {
+  font: 400 9px / 1 Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.trusted-brands__status {
+  position: absolute;
+  bottom: -3px;
+  color: var(--tb-champagne);
+  font: 600 9px / 1.2 Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@keyframes trusted-brands-marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 650px) {
+  .trusted-brands__header {
+    align-items: start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .trusted-brands__pause {
+    align-self: flex-start;
+  }
+
+  .trusted-brands h2 {
+    font-size: 11px;
+    letter-spacing: .13em;
+  }
+
+  .trusted-brands__viewport {
+    margin-top: 26px;
+  }
+
+  .trusted-brands__group {
+    gap: 34px;
+    padding-inline: 44px;
+  }
+
+  .trusted-brands__item {
+    flex-basis: 146px;
+  }
+
+  .trusted-brands__status {
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-brands__track {
+    animation: none;
+  }
+
+  .trusted-brands__group + .trusted-brands__group {
+    display: none;
+  }
+
+  .trusted-brands__mark,
+  .trusted-brands__secondary,
+  .trusted-brands__detail {
+    transition: none;
+  }
+}

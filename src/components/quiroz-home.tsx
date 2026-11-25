@@ -8,6 +8,7 @@ import {
 import projects from '@/content/projects.json'
 import { HomePortfolio } from './quiroz-home-portfolio'
 import { QuirozIntro } from './quiroz-intro'
+import { TrustedBrands } from './TrustedBrands'
 import './quiroz-home.css'
 
 const BASE = import.meta.env.BASE_URL
@@ -162,6 +163,8 @@ export function QuirozHome() {
           </a>
         </figure>
       </section>
+
+      <TrustedBrands />
 
       <HomePortfolio items={projects} />
 
